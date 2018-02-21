@@ -17,7 +17,6 @@ export class HeroService {
 
   private heroesUrl = 'https://hotsapi.net/api/v1/heroes';  // URL to web api
 
-
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
@@ -26,9 +25,21 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(heroes => this.log(`fetched heroes`)),
+        tap(heroes => heroes
+          // .map(
+          //   heroName => heroName.name
+          //   .toLowerCase()
+          //   .replace(/[\'.]/g, '')
+          //   .replace(' ', '-')
+          //   .replace('ú', 'u')
+          // )
+        ),
         catchError(this.handleError('getHeroes', []))
       );
+      // .pipe(
+      //   tap(heroes => {console.log(heroes[0].name); this.log(`fetched heroes`)}),
+      //   catchError(this.handleError('getHeroes', []))
+      // );
   }
 
   /** GET hero by id. Return `undefined` when id not found */

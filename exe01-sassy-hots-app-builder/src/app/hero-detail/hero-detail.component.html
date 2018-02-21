@@ -11,28 +11,22 @@
       <input [(ngModel)]="hero.name" placeholder="name">
     </label>
   </div>
+  <!-- <div class="row">
+    <h3 class="col-lg-12">Abilities :</h3>
+    <ng-container *ngFor="let talent of hero.talents">
+      <p class="col-lg-12"><img src="{{ talent.icon_url['64x64'] }}" alt="">{{ talent.name }}</p>
+      <ng-container [ngSwitch]="talent[i]?.talents[i].sort">
+        <img *ngSwitchCase="'2'" src="{{ talent[i].icon_url }}" alt="">
+      </ng-container>
+    </ng-container>
+  </div> -->
   <div class="row">
     <h3 class="col-lg-12">Abilities :</h3>
-    <div class="col-lg-12"><span>Talent 1 : </span>{{hero.talents[0].title}}</div>
-    <div class="col-lg-4">
-      <!--<ng-container *ng-switch="role?.talents[0].ability">
-        <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[0].icon }}" alt="{{hero.talents[0].title}}">
-      </ng-container>-->
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[0].icon }}" alt="{{hero.talents[0].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[1].icon }}" alt="{{hero.talents[1].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[2].icon }}" alt="{{hero.talents[2].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[3].icon }}" alt="{{hero.talents[3].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[4].icon }}" alt="{{hero.talents[4].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[5].icon }}" alt="{{hero.talents[5].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[6].icon }}" alt="{{hero.talents[6].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[7].icon }}" alt="{{hero.talents[7].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[8].icon }}" alt="{{hero.talents[8].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[9].icon }}" alt="{{hero.talents[9].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[10].icon }}" alt="{{hero.talents[10].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[11].icon }}" alt="{{hero.talents[11].title}}">
-      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[12].icon }}" alt="{{hero.talents[12].title}}">
-    </div>
+    <ng-container *ngFor="let talent of hero.talents">
+      <p class="col-lg-12"><img src="{{ talent.icon_url['64x64'] }}" alt="">{{ talent.title }}</p>
+    </ng-container>
   </div>
+
 </div>
 
 <button (click)="save()">save</button>
