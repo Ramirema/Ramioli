@@ -1,0 +1,238 @@
+/* HeroesComponent's private CSS styles */
+@import '../../_variables.scss';
+
+// BACKGROUNDS
+.assa-bg {
+  // background-color: $assassin;
+}
+
+.warr-bg {
+  // background-color: $blueLight;
+}
+
+.supp-bg {
+  // background-color: $support;
+}
+
+.spec-bg {
+  // background-color: $specialist;
+}
+
+// BACKGROUNDS-DEG
+.assa-bg-deg {
+  border-bottom: 1px solid $assassin;
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c571ff+0,091d3d+100 */
+    background: radial-gradient(circle at bottom, #eb4b4b 0%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+}
+
+.warr-bg-deg {
+  border-bottom: 1px solid $warrior;
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c571ff+0,091d3d+100 */
+    background: radial-gradient(circle at bottom, #178BEB 0%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  }
+}
+
+.supp-bg-deg {
+  border-bottom: 1px solid $support;
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c571ff+0,091d3d+100 */
+    background: radial-gradient(circle at bottom, #02E9D9 0%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  }
+}
+
+.spec-bg-deg {
+  border-bottom: 1px solid $specialist;
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c571ff+0,091d3d+100 */
+    background: radial-gradient(circle at bottom, #C571FF 0%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  }
+}
+
+// BORDERS
+.assa-bd {
+  border: 1px solid $assassin;
+}
+
+.warr-bd {
+  border: 1px solid $warrior;
+}
+
+.supp-bd {
+  border: 1px solid $support;
+}
+
+.spec-bd {
+  border: 1px solid $specialist;
+}
+
+h2 {
+  position: relative;
+  margin-top: 7px;
+  padding: 10px 15px;
+  font-size: 1.3rem;
+  color: white;
+  background-color: $blueLight;
+
+  button {
+    float: right;
+    padding: 4px 10px;
+    font-family: 'Open Sans';
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    border: 0px solid $blueDark;
+    &:not(:first-of-type) {
+      margin-right: 15px;
+    }
+  }
+}
+
+ul.heroes {
+  padding: 30px 15px 15px 15px;
+  list-style-type: none;
+  // background-color: lighten(#d1d1d1, 15%);
+  background-color: darken($color: $blueMid, $amount: 15%);
+
+  > li {
+    margin-bottom: 30px;
+    // background-color: red;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &.selected div#hero-details {
+      background-color: darken($blueMid, 15%);
+    }
+  }
+}
+
+#hero-details {
+  display: block;
+  color: white;
+  background-color: $blueDark;
+  transition: all 0.3s ease-in-out;
+
+  #hero-details-img-container {
+    position: relative;
+    padding-top: 15px;
+
+    &:before {
+      transition: all 0.3s ease-in-out;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.4;
+    }
+
+    > #hero-details-avatar {
+      z-index: 1;
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      // border: 1px solid #C571FF;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #hero-details-role-pic {
+      z-index: 1;
+      position: relative;
+      top: -17px;
+      display: block;
+      margin: 0 auto;
+      padding: 5px 0;
+      width: 34px;
+      height: 34px;
+      background-color: $blueDark;
+      border-radius: 50%;
+      // border: 1px solid #C571FF;
+    }
+  }
+  > #hero-details-name {
+    padding: 5px 0;
+    text-align: center;
+    border-bottom: 1px solid #092d4f;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    // background-color: #133d80;
+    transition: all 0.3s ease-in-out;
+  }
+
+  > span {
+    display: block;
+    padding: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    min-width: 30px;
+    // background-color: lighten($color: red, $amount: 40%);
+  }
+
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: lighten($color: $blueDark, $amount: 15%);
+
+    #hero-details-name.assa-bg {
+      background-color: darken($assassin, 3%);
+      border-bottom: 1px solid $blueDark;
+    }
+
+    #hero-details-name.spec-bg {
+      background-color: darken($specialist, 3%);
+      border-bottom: 1px solid $blueDark;
+    }
+
+    #hero-details-name.supp-bg {
+      background-color: darken($support, 10%);
+      border-bottom: 1px solid $blueDark;
+    }
+
+    #hero-details-name.warr-bg {
+      background-color: darken($warrior, 10%);
+      border-bottom: 1px solid $blueDark;
+    }
+
+    #hero-details-img-container {
+
+      &:before {
+        opacity: 0.7;
+      }
+    }
+  }
+
+
+  &:hover #hero-details-avatar.assa-bd,
+  &:hover #hero-details-role-pic.assa-bd {
+    border: 1px solid darken($assassin, 5%);
+  }
+
+  &:hover #hero-details-avatar.warr-bd,
+  &:hover #hero-details-role-pic.warr-bd {
+    border: 1px solid darken($warrior, 10%);
+  }
+
+  &:hover #hero-details-avatar.spec-bd,
+  &:hover #hero-details-role-pic.spec-bd {
+    border: 1px solid darken($specialist, 10%);
+  }
+
+  &:hover #hero-details-avatar.supp-bd,
+  &:hover #hero-details-role-pic.supp-bd {
+    border: 1px solid darken($support, 10%);
+  }
+}

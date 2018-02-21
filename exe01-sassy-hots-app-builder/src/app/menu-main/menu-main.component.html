@@ -1,0 +1,8 @@
+<nav id="menu-main">
+  <ul class="container">
+    <li><a href="/"><img src="http://8gmwp015fo-flywheel.netdna-ssl.com/wp-content/themes/blizzpro2016/images/blizz-icons/ico_heroes.png" alt="HOTS builder App Logo"></a></li>
+    <li *ngFor="let menu of menus" [class.active]="menu === selectedMenu" (click)="onSelect(menu)">
+      <a routerLink="{{ menu.link }}">{{ menu.name }}</a>
+    </li>
+  </ul>
+</nav>

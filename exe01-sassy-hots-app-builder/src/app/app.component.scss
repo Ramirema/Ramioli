@@ -1,0 +1,63 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+@import '../variables';
+
+
+div.blueLight,
+div.blueMid,
+div.blueDark {
+  height: 25px;
+  color: white;
+  border: 1px solid white;
+}
+
+div.blueLight {
+  background-color: $blueLight;
+}
+
+div.blueMid {
+  background-color: $blueMid;
+}
+
+div.blueDark {
+  background-color: $blueDark;
+}
+
+
+h1 {
+  font-size: 1.7rem;
+}
+
+div#logo-container {
+  background: url('../assets/images/banner_01.jpg') center -25px no-repeat;
+  background-size: cover;
+
+  img.logo {
+    margin: 125px 0;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: darkslateblue;
+  }
+}
+
+@keyframes wiz {
+	0% {
+		// box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    transform: translatey(0px);
+    animation-timing-function: linear;
+	}
+  50% {
+		// box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(5px);
+    animation-timing-function: linear;
+  }
+  100% {
+		// box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+    animation-timing-function: linear;
+	}
+}

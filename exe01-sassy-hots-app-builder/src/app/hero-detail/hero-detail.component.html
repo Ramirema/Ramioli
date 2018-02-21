@@ -1,0 +1,40 @@
+<div *ngIf="hero">
+  <h2>{{ hero.name | uppercase }} Details</h2>
+  <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
+  <img src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
+  <div><span>Name: </span>{{hero.name}}</div>
+  <div><span>Attribute_id: </span>{{hero.attribute_id}}</div>
+  <div><span>Role: </span>{{hero.role}}</div>
+  <div><span>Type: </span>{{hero.type}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name">
+    </label>
+  </div>
+  <div class="row">
+    <h3 class="col-lg-12">Abilities :</h3>
+    <div class="col-lg-12"><span>Talent 1 : </span>{{hero.talents[0].title}}</div>
+    <div class="col-lg-4">
+      <!--<ng-container *ng-switch="role?.talents[0].ability">
+        <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[0].icon }}" alt="{{hero.talents[0].title}}">
+      </ng-container>-->
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[0].icon }}" alt="{{hero.talents[0].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[1].icon }}" alt="{{hero.talents[1].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[2].icon }}" alt="{{hero.talents[2].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[3].icon }}" alt="{{hero.talents[3].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[4].icon }}" alt="{{hero.talents[4].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[5].icon }}" alt="{{hero.talents[5].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[6].icon }}" alt="{{hero.talents[6].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[7].icon }}" alt="{{hero.talents[7].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[8].icon }}" alt="{{hero.talents[8].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[9].icon }}" alt="{{hero.talents[9].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[10].icon }}" alt="{{hero.talents[10].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[11].icon }}" alt="{{hero.talents[11].title}}">
+      <img src="http://s3.hotsapi.net/img/talents/64x64/{{ hero.talents[12].icon }}" alt="{{hero.talents[12].title}}">
+    </div>
+  </div>
+</div>
+
+<button (click)="save()">save</button>
+
+<button (click)="goBack()">go back</button>
