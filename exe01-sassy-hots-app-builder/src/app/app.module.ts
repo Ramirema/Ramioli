@@ -17,6 +17,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HeroService } from './hero.service';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
+import { DemoService } from './demo.service';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   imports: [
@@ -39,9 +41,10 @@ import { MessagesComponent } from './messages/messages.component';
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    DemoComponent
   ],
-  providers: [HeroService, MessageService],
+  providers: [HeroService, MessageService, DemoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

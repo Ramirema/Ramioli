@@ -36,26 +36,22 @@ export class HeroService {
   }
 
   /** GET heroes from the server */
-  getHeroName(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
-      .pipe(
-        tap(
-          heroes => heroes
-          .map(
-            heroName => console.log(heroName.name
-              .toLowerCase()
-              .replace(/[\'.]/g, '')
-              .replace(/[ ]/g, '-')
-              .replace('ú', 'u'))
-          )
-        ),
-        catchError(this.handleError('getHeroes', []))
-      );
-      // .pipe(
-      //   tap(heroes => {console.log(heroes[0].name); this.log(`fetched heroes`)}),
-      //   catchError(this.handleError('getHeroes', []))
-      // );
-  }
+  // getHeroName(): Observable<Hero[]> {
+  //   return this.http.get<Hero[]>(this.heroesUrl)
+  //     .pipe(
+  //       tap(
+  //         heroes => heroes
+  //         .map(
+  //           heroName => console.log(heroName.name
+  //             .toLowerCase()
+  //             .replace(/[\'.]/g, '')
+  //             .replace(/[ ]/g, '-')
+  //             .replace('ú', 'u'))
+  //         )
+  //       ),
+  //       catchError(this.handleError('getHeroes', []))
+  //     );
+  // }
 
   /** GET hero by id. Return `undefined` when id not found */
   getHeroNo404<Data>(name: string): Observable<Hero> {

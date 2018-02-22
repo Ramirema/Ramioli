@@ -24,8 +24,7 @@ export class HeroesComponent implements OnInit {
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
-    // this.getHeroes();
-    this.getHeroName();
+    this.getHeroes();
   }
 
   getHeroes(): void {
@@ -34,19 +33,4 @@ export class HeroesComponent implements OnInit {
         heroes => this.heroes = heroes,
       );
   }
-
-  getHeroName(): void {
-    this.heroService.getHeroes()
-      .subscribe(
-        heroes => this.heroes = heroes,
-        // heroes => console.log(
-        //   heroes[0].name
-        //   .toLowerCase()
-        //   .replace(/[\'.]/g, '')
-        //   .replace(/[ ]/g, '-')
-        //   .replace('ú', 'u'))
-        // );
-      );
-  }
-
 }
