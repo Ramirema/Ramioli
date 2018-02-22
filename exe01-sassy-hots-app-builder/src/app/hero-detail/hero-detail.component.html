@@ -2,10 +2,14 @@
   <h2>{{ hero.name | uppercase }} Details</h2>
   <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
   <img src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
-  <div><span>Name: </span>{{hero.name}}</div>
-  <div><span>Attribute_id: </span>{{hero.attribute_id}}</div>
-  <div><span>Role: </span>{{hero.role}}</div>
-  <div><span>Type: </span>{{hero.type}}</div>
+  <div>
+    <span>Name: </span>{{hero.name}}</div>
+  <div>
+    <span>Attribute_id: </span>{{hero.attribute_id}}</div>
+  <div>
+    <span>Role: </span>{{hero.role}}</div>
+  <div>
+    <span>Type: </span>{{hero.type}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name">
@@ -22,9 +26,46 @@
   </div> -->
   <div class="row">
     <h3 class="col-lg-12">Abilities :</h3>
-    <ng-container *ngFor="let talent of hero.talents">
-      <p class="col-lg-12"><img src="{{ talent.icon_url['64x64'] }}" alt="">{{ talent.title }}</p>
-    </ng-container>
+    <!-- LVL 1 -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 1">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="1" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
+    <!-- LVL 4 -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 4">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="4" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
+    <!-- LVL 4 -->
+    <!-- <ng-container *ngSwitchCase="4">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">4 - {{ talent.title }}</p>
+        </ng-container> -->
+    <!-- LVL 7 -->
+    <!-- <ng-container *ngSwitchCase="7">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">7 - {{ talent.title }}</p>
+        </ng-container> -->
+    <!-- LVL 10 -->
+    <!-- <ng-container *ngSwitchCase="10">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">10 - {{ talent.title }}</p>
+        </ng-container> -->
+    <!-- LVL 13 -->
+    <!-- <ng-container *ngSwitchCase="13">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">13 - {{ talent.title }}</p>
+        </ng-container> -->
+    <!-- LVL 16 -->
+    <!-- <ng-container *ngSwitchCase="16">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">16 - {{ talent.title }}</p>
+        </ng-container> -->
+    <!-- LVL 20 -->
+    <!-- <ng-container *ngSwitchCase="20">
+          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">20 - {{ talent.title }}</p>
+        </ng-container> -->
   </div>
 
 </div>
