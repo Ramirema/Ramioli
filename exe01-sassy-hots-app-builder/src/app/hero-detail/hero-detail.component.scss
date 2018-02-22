@@ -1,25 +1,22 @@
-
 h2{
-    color: white;
-  }
-  
-  .character-page{
-    color: white;
-    div{
-      font-size: 1.3em;
-      span{
-        font-size: 0.8em;
-      }
-    }
-    img{
+  color: white;
+}
 
-    }
+.character-page{
+  color: white;
+
+  .character-page-details {
+    background: radial-gradient(circle at left, #C571FF -100%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    opacity: 0.7;
+
     .thumb{
         width: 15.34%;
     }
+
+    .character-name{
+      margin: 50px 0;
+      font-size: 3em;
+    }
+
   }
-  .character-name{
-    margin: 50px 0;
-    font-size: 3em;
-  }
-  
+}

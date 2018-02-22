@@ -1,9 +1,9 @@
 <ng-container *ngIf="hero">
-  <div class="row character-page">
-    <h2 class="character-name col-lg-12">{{ hero.name | uppercase }}</h2>
+  <h2 class="character-name">{{ hero.name | uppercase }}</h2>
+  <div class="character-page row">
     <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
     <img class="col-lg-4" src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
-    <div class="col-lg-8">
+    <div class="col-lg-8 character-page-details">
       <div>
         <span>Name: </span>{{hero.name}}
       </div>
@@ -20,7 +20,7 @@
             <ng-container  *ngFor="let ability of hero.abilities">
               <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{hero.short_name}}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
             </ng-container>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
