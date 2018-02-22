@@ -98,6 +98,7 @@ h2 {
 }
 
 ul.heroes {
+  max-width: 100%;
   padding: 30px 15px 15px 15px;
   list-style-type: none;
   // background-color: lighten(#d1d1d1, 15%);
@@ -119,6 +120,7 @@ ul.heroes {
 
 #hero-details {
   display: block;
+  min-height: 203px;
   color: white;
   background-color: $blueDark;
   transition: all 0.3s ease-in-out;
@@ -144,6 +146,7 @@ ul.heroes {
       position: relative;
       display: block;
       margin: 0 auto;
+      min-width: 92px;
       // border: 1px solid #C571FF;
       transition: all 0.3s ease-in-out;
     }

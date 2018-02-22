@@ -16,6 +16,7 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'https://hotsapi.net/api/v1/heroes';  // URL to web api
+  public heroName;
 
   constructor(
     private http: HttpClient,
@@ -25,14 +26,28 @@ export class HeroService {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(heroes => heroes
-          // .map(
-          //   heroName => heroName.name
-          //   .toLowerCase()
-          //   .replace(/[\'.]/g, '')
-          //   .replace(' ', '-')
-          //   .replace('ú', 'u')
-          // )
+        tap(heroes => heroes),
+        catchError(this.handleError('getHeroes', []))
+      );
+      // .pipe(
+      //   tap(heroes => {console.log(heroes[0].name); this.log(`fetched heroes`)}),
+      //   catchError(this.handleError('getHeroes', []))
+      // );
+  }
+
+  /** GET heroes from the server */
+  getHeroName(): Observable<Hero[]> {
+    return this.http.get<Hero[]>(this.heroesUrl)
+      .pipe(
+        tap(
+          heroes => heroes
+          .map(
+            heroName => console.log(heroName.name
+              .toLowerCase()
+              .replace(/[\'.]/g, '')
+              .replace(/[ ]/g, '-')
+              .replace('ú', 'u'))
+          )
         ),
         catchError(this.handleError('getHeroes', []))
       );
@@ -74,35 +89,6 @@ export class HeroService {
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
       tap(_ => this.log(`found heroes matching "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes', []))
-    );
-  }
-
-  //////// Save methods //////////
-
-  /** POST: add a new hero to the server */
-  addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-      tap((hero: Hero) => this.log(`added hero w/ short_name=${hero.short_name}`)),
-      catchError(this.handleError<Hero>('addHero'))
-    );
-  }
-
-  /** DELETE: delete the hero from the server */
-  deleteHero(hero: Hero | string): Observable<Hero> {
-    const short_name = typeof hero === 'string' ? hero : hero.short_name;
-    const url = `${this.heroesUrl}/${short_name}`;
-
-    return this.http.delete<Hero>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted hero short_name=${short_name}`)),
-      catchError(this.handleError<Hero>('deleteHero'))
-    );
-  }
-
-  /** PUT: update the hero on the server */
-  updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.short_name}`)),
-      catchError(this.handleError<any>('updateHero'))
     );
   }
 
