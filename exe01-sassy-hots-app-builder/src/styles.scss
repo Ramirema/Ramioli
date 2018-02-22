@@ -24,3 +24,24 @@ input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
 }
+
+h2{
+  color: white;
+}
+
+.character-page{
+  color: white;
+  div{
+    font-size: 1.3em;
+    span{
+      font-size: 0.8em;
+    }
+  }
+  img{
+    background-color: red;
+  }
+}
+.character-name{
+  margin: 50px 0;
+  font-size: 3em;
+}

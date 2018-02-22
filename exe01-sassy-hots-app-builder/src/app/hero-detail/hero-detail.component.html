@@ -1,20 +1,31 @@
-<div *ngIf="hero">
-  <h2>{{ hero.name | uppercase }} Details</h2>
-  <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
-  <img src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
-  <div>
-    <span>Name: </span>{{hero.name}}</div>
-  <div>
-    <span>Attribute_id: </span>{{hero.attribute_id}}</div>
-  <div>
-    <span>Role: </span>{{hero.role}}</div>
-  <div>
-    <span>Type: </span>{{hero.type}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name">
-    </label>
+<ng-container *ngIf="hero">
+  <div class="row character-page">
+    <h2 class="character-name col-lg-12">{{ hero.name | uppercase }}</h2>
+    <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
+    <img class="col-lg-4" src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
+    <div class="col-lg-8">
+      <div>
+        <span>Name: </span>{{hero.name}}
+      </div>
+      <div>
+        <span>Role: </span>{{hero.role}}
+      </div>
+      <div>
+        <span>Type: </span>{{hero.type}}
+      </div>
+      <h3>Abilities : </h3>
+      <div class="row">
+        <div class="col-lg-12" >
+          <ng-container *ngFor="let ability of hero.abilities">
+            <img src="https://blzmedia-a.akamaihd.net/heroes/{{hero.short_name}}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
+          </ng-container> 
+        </div>
+      </div>
+    </div>
+
+
   </div>
+
   <!-- <div class="row">
     <h3 class="col-lg-12">Abilities :</h3>
     <ng-container *ngFor="let talent of hero.talents">
@@ -24,8 +35,9 @@
       </ng-container>
     </ng-container>
   </div> -->
+
   <div class="row">
-    <h3 class="col-lg-12">Abilities :</h3>
+    <h3 class="col-lg-12">Talents :</h3>
     <!-- LVL 1 -->
     <div class="row">
       <ng-container *ngFor="let talent of hero.talents">
@@ -84,7 +96,7 @@
     </div>
   </div>
 
-</div>
+</ng-container>
 
 <button (click)="save()">save</button>
 
