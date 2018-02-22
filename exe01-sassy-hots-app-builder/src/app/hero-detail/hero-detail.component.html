@@ -42,30 +42,46 @@
         </div>
       </ng-container>
     </div>
-    <!-- LVL 4 -->
-    <!-- <ng-container *ngSwitchCase="4">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">4 - {{ talent.title }}</p>
-        </ng-container> -->
     <!-- LVL 7 -->
-    <!-- <ng-container *ngSwitchCase="7">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">7 - {{ talent.title }}</p>
-        </ng-container> -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 7">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="7" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
     <!-- LVL 10 -->
-    <!-- <ng-container *ngSwitchCase="10">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">10 - {{ talent.title }}</p>
-        </ng-container> -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 10">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="10" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
     <!-- LVL 13 -->
-    <!-- <ng-container *ngSwitchCase="13">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">13 - {{ talent.title }}</p>
-        </ng-container> -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 13">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="13" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
     <!-- LVL 16 -->
-    <!-- <ng-container *ngSwitchCase="16">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">16 - {{ talent.title }}</p>
-        </ng-container> -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 16">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="16" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
     <!-- LVL 20 -->
-    <!-- <ng-container *ngSwitchCase="20">
-          <p class="col-lg-3"><img src="{{ talent.icon_url['64x64'] }}" alt="">20 - {{ talent.title }}</p>
-        </ng-container> -->
+    <div class="row">
+      <ng-container *ngFor="let talent of hero.talents">
+        <div class="col-lg-1" *ngIf="talent.level === 20">
+          <img src="{{ talent.icon_url['64x64'] }}" alt="20" title="{{ talent.title }}">
+        </div>
+      </ng-container>
+    </div>
   </div>
 
 </div>
