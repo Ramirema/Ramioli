@@ -14,11 +14,13 @@
         <span>Type: </span>{{hero.type}}
       </div>
       <h3>Abilities : </h3>
-      <div class="row">
-        <div class="col-lg-12" >
-          <ng-container *ngFor="let ability of hero.abilities">
-            <img src="https://blzmedia-a.akamaihd.net/heroes/{{hero.short_name}}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
-          </ng-container> 
+      <div>
+        <div class="row">
+          <div class="col-lg-12">
+            <ng-container  *ngFor="let ability of hero.abilities">
+              <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{hero.short_name}}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
+            </ng-container>
+          </div> 
         </div>
       </div>
     </div>
