@@ -45,7 +45,8 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
     .subscribe(
       data => {
-        const heroName = data
+        const heroName = this.heroesOff = data
+        .filter(test => test.translations.length > 0)
         .map(
           item => item.name
           .toLowerCase()
@@ -53,13 +54,7 @@ export class HeroesComponent implements OnInit {
           .replace(/[ ]/g, '-')
           .replace('ú', 'u')
         );
-        console.log(heroName);
-        // console.log(this.heroes);
-        // const heroOff = this.heroes.filter(test => test.translations.length > 0);
-        // this.heroesOff = this.heroes.filter(test => test.translations.length > 0);
-        // console.log(this.heroesOff);
-        // console.log(heroOff);
-        return this.heroez = heroName;
+        return this.heroesOff = heroName;
       },
       err => console.error(err),
       () => console.log('done loading heroNamez')
