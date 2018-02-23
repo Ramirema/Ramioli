@@ -1,23 +1,6 @@
 /* HeroesComponent's private CSS styles */
 @import '../../_variables.scss';
 
-// BACKGROUNDS
-.assa-bg {
-  // background-color: $assassin;
-}
-
-.warr-bg {
-  // background-color: $blueLight;
-}
-
-.supp-bg {
-  // background-color: $support;
-}
-
-.spec-bg {
-  // background-color: $specialist;
-}
-
 // BACKGROUNDS-DEG
 .assa-bg-deg {
   border-bottom: 1px solid $assassin;
@@ -57,6 +40,16 @@
   }
 }
 
+.mult-bg-deg {
+  border-bottom: 1px solid $multiclass;
+
+  &:before {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c571ff+0,091d3d+100 */
+    background: radial-gradient(circle at bottom, #FCE444 0%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+  }
+}
+
 // BORDERS
 .assa-bd {
   border: 1px solid $assassin;
@@ -72,6 +65,10 @@
 
 .spec-bd {
   border: 1px solid $specialist;
+}
+
+.mult-bd {
+  border: 1px solid $multiclass;
 }
 
 h2 {
@@ -164,6 +161,13 @@ ul.heroes {
       border-radius: 50%;
       // border: 1px solid #C571FF;
     }
+
+    #hero-details-role-pic-mult {
+      @extend #hero-details-role-pic;
+      padding-top: 8px;
+      padding-bottom: 6px;
+    }
+
   }
   > #hero-details-name {
     padding: 5px 0;
@@ -171,6 +175,7 @@ ul.heroes {
     border-bottom: 1px solid #092d4f;
     text-transform: uppercase;
     font-size: 0.9rem;
+    text-shadow: 1px 1px 1px #111;
     // background-color: #133d80;
     transition: all 0.3s ease-in-out;
   }
@@ -210,6 +215,11 @@ ul.heroes {
       border-bottom: 1px solid $blueDark;
     }
 
+    #hero-details-name.mult-bg {
+      background-color: darken($multiclass, 13%);
+      border-bottom: 1px solid $blueDark;
+    }
+
     #hero-details-img-container {
 
       &:before {
@@ -221,21 +231,26 @@ ul.heroes {
 
   &:hover #hero-details-avatar.assa-bd,
   &:hover #hero-details-role-pic.assa-bd {
-    border: 1px solid darken($assassin, 5%);
+    border: 1px solid lighten($assassin, 5%);
   }
 
   &:hover #hero-details-avatar.warr-bd,
   &:hover #hero-details-role-pic.warr-bd {
-    border: 1px solid darken($warrior, 10%);
+    border: 1px solid lighten($warrior, 10%);
   }
 
   &:hover #hero-details-avatar.spec-bd,
   &:hover #hero-details-role-pic.spec-bd {
-    border: 1px solid darken($specialist, 10%);
+    border: 1px solid lighten($specialist, 10%);
   }
 
   &:hover #hero-details-avatar.supp-bd,
   &:hover #hero-details-role-pic.supp-bd {
     border: 1px solid darken($support, 10%);
+  }
+
+  &:hover #hero-details-avatar.mult-bd,
+  &:hover #hero-details-role-pic.mult-bd {
+    border: 1px solid darken($multiclass, 10%);
   }
 }

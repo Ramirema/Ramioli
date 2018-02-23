@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, filter } from 'rxjs/operators';
 
 import { Hero } from './hero';
 import { MessageService } from './message.service';
@@ -16,7 +16,6 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'https://hotsapi.net/api/v1/heroes';  // URL to web api
-  public heroName;
 
   constructor(
     private http: HttpClient,
@@ -34,24 +33,6 @@ export class HeroService {
       //   catchError(this.handleError('getHeroes', []))
       // );
   }
-
-  /** GET heroes from the server */
-  // getHeroName(): Observable<Hero[]> {
-  //   return this.http.get<Hero[]>(this.heroesUrl)
-  //     .pipe(
-  //       tap(
-  //         heroes => heroes
-  //         .map(
-  //           heroName => console.log(heroName.name
-  //             .toLowerCase()
-  //             .replace(/[\'.]/g, '')
-  //             .replace(/[ ]/g, '-')
-  //             .replace('ú', 'u'))
-  //         )
-  //       ),
-  //       catchError(this.handleError('getHeroes', []))
-  //     );
-  // }
 
   /** GET hero by id. Return `undefined` when id not found */
   getHeroNo404<Data>(name: string): Observable<Hero> {

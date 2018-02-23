@@ -4,57 +4,47 @@
   <button class="spec-bg">Specialists</button>
   <button class="assa-bg">Assassins</button>-->
 </h2>
+
 <div class="container">
   <ul class="heroes row">
 
-    <!-- <li *ngFor="let hname of data">
-      <div>{{ hname.name }}</div>
-    </li> -->
-
-    <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let hero of heroes; let i=index">
-      <a id="hero-details" routerLink="/hero/{{hero.short_name}}">
-        <!-- <div id="hero-details-name" class="warr-bg">{{ hero.name }}</div> -->
-        <ng-container [ngSwitch]="hero?.role">
-          <!-- ASSASSIN -->
-          <div *ngSwitchCase="'Assassin'" id="hero-details-name" class="assa-bg">{{ hero.name }}</div>
-          <div *ngSwitchCase="'Assassin'" id="hero-details-img-container" class="assa-bg-deg">
-            <img class="assa-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ hero.short_name }}.jpg" alt="{{ hero.name }}">
-            <img class="assa-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/e/ee/Role_Assassin_Simple.svg?version=8a37cb81c613a217a13a4f186a83238c" alt="{{ hero.role }}">
-          </div>
-          <!-- WARRIOR -->
-          <div *ngSwitchCase="'Warrior'" id="hero-details-name" class="warr-bg">{{ hero.name }}</div>
-          <div *ngSwitchCase="'Warrior'" id="hero-details-img-container" class="warr-bg-deg">
-            <img class="warr-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ hero.short_name }}.jpg" alt="{{ hero.name }}">
-            <img class="warr-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/4/42/Role_Warrior_Simple.svg?version=de1eb19ace911216375b9544efd7436f" alt="{{ hero.role }}">
-          </div>
-          <!-- SUPPORT -->
-          <div *ngSwitchCase="'Support'" id="hero-details-name" class="supp-bg">{{ hero.name }}</div>
-          <div *ngSwitchCase="'Support'" id="hero-details-img-container" class="supp-bg-deg">
-            <img class="supp-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ hero.short_name }}.jpg" alt="{{ hero.name }}">
-            <img class="supp-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/f/f0/Role_Support_Simple.svg?version=5d99e408135cc0f2d94e4e4a817f1c5f" alt="{{ hero.role }}">
-          </div>
-          <!-- SPECIALIST -->
-          <div *ngSwitchCase="'Specialist'" id="hero-details-name" class="spec-bg">{{ hero.name }}</div>
-          <div *ngSwitchCase="'Specialist'" id="hero-details-img-container" class="spec-bg-deg">
-            <img class="spec-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ hero.short_name }}.jpg" alt="{{ hero.name }}">
-            <img class="spec-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/0/0a/Role_Specialist_Simple.svg?version=3aacd0491129a139f55f091988dfe10f" alt="{{ hero.role }}">
-          </div>
-        </ng-container>
-        <span>{{ hero.role }}</span>
-      </a>
-    </li>
+      <li class="col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let hero of heroes; let i=index;">
+        <a id="hero-details" routerLink="/hero/{{hero.short_name}}">
+          <ng-container [ngSwitch]="hero?.role">
+              <!-- ASSASSIN -->
+              <div *ngSwitchCase="'Assassin'" id="hero-details-name" class="assa-bg">{{ hero.name }}</div>
+              <div *ngSwitchCase="'Assassin'" id="hero-details-img-container" class="assa-bg-deg">
+                <img class="assa-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ heroez[i] }}.jpg" alt="{{ hero.name }}">
+                <img class="assa-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/e/ee/Role_Assassin_Simple.svg?version=8a37cb81c613a217a13a4f186a83238c" alt="{{ hero.role }}">
+              </div>
+              <!-- WARRIOR -->
+              <div *ngSwitchCase="'Warrior'" id="hero-details-name" class="warr-bg">{{ hero.name }}</div>
+              <div *ngSwitchCase="'Warrior'" id="hero-details-img-container" class="warr-bg-deg">
+                <img class="warr-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ heroez[i] }}.jpg" alt="{{ hero.name }}">
+                <img class="warr-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/4/42/Role_Warrior_Simple.svg?version=de1eb19ace911216375b9544efd7436f" alt="{{ hero.role }}">
+              </div>
+              <!-- SUPPORT -->
+              <div *ngSwitchCase="'Support'" id="hero-details-name" class="supp-bg">{{ hero.name }}</div>
+              <div *ngSwitchCase="'Support'" id="hero-details-img-container" class="supp-bg-deg">
+                <img class="supp-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ heroez[i] }}.jpg" alt="{{ hero.name }}">
+                <img class="supp-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/f/f0/Role_Support_Simple.svg?version=5d99e408135cc0f2d94e4e4a817f1c5f" alt="{{ hero.role }}">
+              </div>
+              <!-- SPECIALIST -->
+              <div *ngSwitchCase="'Specialist'" id="hero-details-name" class="spec-bg">{{ hero.name }}</div>
+              <div *ngSwitchCase="'Specialist'" id="hero-details-img-container" class="spec-bg-deg">
+                <img class="spec-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ heroez[i] }}.jpg" alt="{{ hero.name }}">
+                <img class="spec-bd" id="hero-details-role-pic" src="https://d1u5p3l4wpay3k.cloudfront.net/allstars_gamepedia/0/0a/Role_Specialist_Simple.svg?version=3aacd0491129a139f55f091988dfe10f" alt="{{ hero.role }}">
+              </div>
+              <!-- MULTICLASS -->
+              <div *ngSwitchCase="'Multiclass'" id="hero-details-name" class="mult-bg">{{ hero.name }}</div>
+              <div *ngSwitchCase="'Multiclass'" id="hero-details-img-container" class="mult-bg-deg">
+                <img class="mult-bd" id="hero-details-avatar" src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/heroes/avatars/{{ heroez[i] }}.jpg" alt="{{ hero.name }}">
+                <img class="mult-bd" id="hero-details-role-pic-mult" src="data:image/svg+xml;base64,PHN2ZyBpZD0iNmNhNzhjODgtMTU2MC00YTQxLTk3Y2MtNWU5OWQzYTU0MGQ5IiBkYXRhLW5hbWU9%0D%0AIkNhbHF1ZSAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAg%0D%0AMCA4Ni44OSA3NC42MiI+PHRpdGxlPm11bHRpPC90aXRsZT48cG9seWdvbiBwb2ludHM9IjM2Ljcy%0D%0AIDEzLjUgMjguNjcgOC43NyAzMy44MyAwIDAgNC41IDEyLjQ3IDM2LjI3IDE3LjYzIDI3LjUxIDI5%0D%0ALjY5IDM0LjYxIDI5LjY5IDU0LjEyIDQwLjE5IDc0LjYyIDQwLjE5IDQwLjc5IDQwLjE5IDE1LjU1%0D%0AIDM2LjcyIDEzLjUiIHN0eWxlPSJmaWxsOiNmY2UxNDIiLz48cG9seWdvbiBwb2ludHM9IjUwLjE3%0D%0AIDEzLjUgNTguMjEgOC43NyA1My4wNSAwIDg2Ljg5IDQuNSA3NC40MiAzNi4yNyA2OS4yNSAyNy41%0D%0AMSA1Ny4xOSAzNC42MSA1Ny4xOSA1NC4xMiA0Ni42OSA3NC42MiA0Ni42OSA0MC43OSA0Ni42OSAx%0D%0ANS41NSA1MC4xNyAxMy41IiBzdHlsZT0iZmlsbDojZmNlMTQyIi8+PC9zdmc+" alt="{{ hero.role }}">
+              </div>
+          </ng-container>
+          <span>{{ hero.role }}</span>
+        </a>
+      </li>
+    <!-- </ng-container> -->
   </ul>
-</div>
-
-
-<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">
-    add
-  </button>
-  <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
 </div>

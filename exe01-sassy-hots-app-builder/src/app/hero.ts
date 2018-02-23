@@ -7,5 +7,6 @@ export class Hero {
   icon_url: { '92x93': string};
   talents: any[];
   abilities: any[];
+  translations: any[];
 
 }
