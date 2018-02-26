@@ -17,6 +17,7 @@ export class HeroDetailComponent implements OnInit {
 
   @Input() hero: Hero;
   public heroz;
+  public abilities;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class HeroDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getHero();
     this.getHeroLinkName();
+    this.getHeroAbilities();
   }
 
   getHero(): void {
@@ -39,6 +41,45 @@ export class HeroDetailComponent implements OnInit {
       }
     );
 
+  }
+
+  getHeroAbilities(): void {
+    const short_name = this.route.snapshot.paramMap.get('short_name');
+
+    this.heroService.getHero(short_name)
+    .subscribe(
+      data => {
+
+        // Rajoute la propriété SORT pour ordonner
+        this.abilities = data.abilities;
+        this.abilities[0].sort = 6;
+        this.abilities[1].sort = 3;
+        this.abilities[2].sort = 1;
+        this.abilities[3].sort = 4;
+        this.abilities[4].sort = 5;
+        this.abilities[5].sort = 2;
+
+        // Liste les abilities NAME par ordre ASC
+        this.abilities = this.abilities
+        .sort((a, b) => {
+          if (a.sort < b.sort) { return -1; }
+          if (a.sort > b.sort) { return 1; }
+          return 0;
+        });
+
+        // Format all abilities names as formatted link name
+        for (let index = 0; index < data.abilities.length; index++) {
+          this.abilities[index].title = data.abilities[index].title
+          .toLowerCase()
+          .replace(/[\'.]/g, '')
+          .replace(/[ ]/g, '-')
+          .replace('ú', 'u');
+        }
+
+        // console.log(data.abilities);
+
+      }
+    );
   }
 
   getHeroLinkName(): void {

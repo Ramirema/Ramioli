@@ -16,6 +16,7 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'https://hotsapi.net/api/v1/heroes';  // URL to web api
+  private heroUrl = 'https://hotsapi.net/api/v1/hero';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -69,6 +70,7 @@ export class HeroService {
   /* GET heroes whose name contains search term */
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {
+      console.log(term);
       // if not search term, return empty hero array.
       return of([]);
     }

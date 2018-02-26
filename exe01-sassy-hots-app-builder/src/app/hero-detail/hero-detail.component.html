@@ -27,24 +27,14 @@
       <div>
         <div class="row">
           <div class="col-lg-12">
-            <ng-container  *ngFor="let ability of hero.abilities">
-              <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
+            <ng-container  *ngFor="let ability of abilities">
+              <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ ability.title }}.png" alt="">
             </ng-container>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="row">
-    <h3 class="col-lg-12">Abilities :</h3>
-    <ng-container *ngFor="let talent of hero.talents">
-      <p class="col-lg-12"><img src="{{ talent.icon_url['64x64'] }}" alt="">{{ talent.name }}</p>
-      <ng-container [ngSwitch]="talent[i]?.talents[i].sort">
-        <img *ngSwitchCase="'2'" src="{{ talent[i].icon_url }}" alt="">
-      </ng-container>
-    </ng-container>
-  </div> -->
 
   <div class="row">
     <h3 class="col-lg-12">Talents :</h3>
