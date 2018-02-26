@@ -1,31 +1,39 @@
 <ng-container *ngIf="hero">
-  <h2 class="character-name">{{ hero.name | uppercase }}</h2>
-  <div class="character-page row">
-    <!-- <img src="{{ hero.avatar }}" alt="{{ hero.name }}"> -->
-    <img class="col-lg-4" src="https://blzmedia-a.akamaihd.net/heroes/{{ hero.short_name }}/bust.jpg" alt="{{ hero.name }}">
-    <div class="col-lg-8 character-page-details">
+  <h2 class="hero-name">{{ hero.name | uppercase }}</h2>
+  <div class="hero-details row">
+    <div class="col-lg-4 hero-details-img">
+      <img src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/bust.jpg" alt="{{ hero.name }}">
+    </div>
+    <div class="col-lg-8" [ngClass]="{
+      'hero-details-infos-assa-bg': hero.role == 'Assassin',
+      'hero-details-infos-warr-bg': hero.role == 'Warrior',
+      'hero-details-infos-supp-bg': hero.role == 'Support',
+      'hero-details-infos-spec-bg': hero.role == 'Specialist',
+      'hero-details-infos-mult-bg': hero.role == 'Multiclass'
+    }">
       <div>
-        <span>Name: </span>{{hero.name}}
+        <span>Name : </span>{{hero.name}}
       </div>
       <div>
-        <span>Role: </span>{{hero.role}}
+        <span>Role : </span>{{hero.role}}
       </div>
       <div>
-        <span>Type: </span>{{hero.type}}
+        <span>Type : </span>{{hero.type}}
+      </div>
+      <div>
+        <span>Date : </span>{{ hero.release_date }}
       </div>
       <h3>Abilities : </h3>
       <div>
         <div class="row">
           <div class="col-lg-12">
             <ng-container  *ngFor="let ability of hero.abilities">
-              <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{hero.short_name}}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
+              <img class="thumb" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ability.title | lowercase}}.png" alt="">
             </ng-container>
           </div>
         </div>
       </div>
     </div>
-
-
   </div>
 
   <!-- <div class="row">

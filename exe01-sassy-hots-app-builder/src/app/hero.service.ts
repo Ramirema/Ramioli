@@ -57,6 +57,15 @@ export class HeroService {
     );
   }
 
+  /** GET heroLinkName by name . Will 404 if id not found */
+  getHeroLinkName(name: string): Observable<Hero> {
+    const url = `${this.heroesUrl}/${name}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero name=${name}`)),
+      catchError(this.handleError<Hero>(`getHero name=${name}`))
+    );
+  }
+
   /* GET heroes whose name contains search term */
   searchHeroes(term: string): Observable<Hero[]> {
     if (!term.trim()) {

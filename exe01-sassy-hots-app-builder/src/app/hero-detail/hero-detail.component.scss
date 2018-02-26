@@ -1,12 +1,30 @@
-h2{
+@import '../../_variables.scss';
+
+h2.hero-name {
+  margin: 15px 0;
+  padding: 10px 15px;
+  font-size: 1.3rem;
   color: white;
+  background-color: $blueLight;
 }
 
-.character-page{
+.hero-details{
   color: white;
 
-  .character-page-details {
-    background: radial-gradient(circle at left, #C571FF -100%,#091d3d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  .hero-details-img {
+
+    > img {
+      display: block;
+      background: radial-gradient(circle at center, $blueDark 0%,darkslateblue 100%);
+      padding: 5px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+  }
+
+  .hero-details-infos {
+    padding: 15px;
     opacity: 0.7;
 
     .thumb{
@@ -16,6 +34,36 @@ h2{
     .character-name{
       margin: 50px 0;
       font-size: 3em;
+    }
+
+    &-assa-bg {
+      padding: 15px;
+      background: radial-gradient(circle at left, $assassin -100%,$blueDark 100%);
+      border-bottom: 1px solid $assassin;
+    }
+
+    &-warr-bg {
+      padding: 15px;
+      background: radial-gradient(circle at left, $warrior -100%,$blueDark 100%);
+      border-bottom: 1px solid $warrior;
+    }
+
+    &-supp-bg {
+      padding: 15px;
+      background: radial-gradient(circle at left, $support -100%,$blueDark 100%);
+      border-bottom: 1px solid $support;
+    }
+
+    &-spec-bg {
+      padding: 15px;
+      background: radial-gradient(circle at left, $specialist -100%,$blueDark 100%);
+      border-bottom: 1px solid $specialist;
+    }
+
+    &-mult-bg {
+      padding: 15px;
+      background: radial-gradient(circle at left, $multiclass -100%,$blueDark 100%);
+      border-bottom: 1px solid $multiclass;
     }
 
   }

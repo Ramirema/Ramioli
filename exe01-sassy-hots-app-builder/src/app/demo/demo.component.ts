@@ -50,4 +50,3 @@ export class DemoComponent implements OnInit {
     }
 
 }
-

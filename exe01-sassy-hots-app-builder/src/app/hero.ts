@@ -8,5 +8,6 @@ export class Hero {
   talents: any[];
   abilities: any[];
   translations: any[];
+  release_date: Date;
 
 }
