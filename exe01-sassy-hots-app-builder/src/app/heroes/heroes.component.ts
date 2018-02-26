@@ -34,7 +34,11 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(
         data => {
-          this.heroesOff = data
+          this.heroesOff = data.sort(function(a, b) {
+            if (a.name < b.name) { return -1; }
+            if (a.name > b.name) { return 1; }
+            return 0;
+          })
           .filter(test => test.translations.length > 0);
           return this.heroes = this.heroesOff;
         }
@@ -45,7 +49,11 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
     .subscribe(
       data => {
-        const heroName = this.heroesOff = data
+        const heroName = this.heroesOff = data.sort(function(a, b) {
+          if (a.name < b.name) { return -1; }
+          if (a.name > b.name) { return 1; }
+          return 0;
+        })
         .filter(test => test.translations.length > 0)
         .map(
           item => item.name
