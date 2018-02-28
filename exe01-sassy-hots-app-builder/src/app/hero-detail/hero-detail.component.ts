@@ -101,13 +101,45 @@ export class HeroDetailComponent implements OnInit {
             });
             // console.log(this.talents);
 
-          // Format all talents names as formatted link name
+          // Format all talents names as formatted link name for images URL
           for (let index = 0; index < data.talents.length; index++) {
+
             this.talents[index].title = data.talents[index].title
-              // .toLowerCase()
+
+              // For all Heroes removes special chars and spaces
               .replace(/[\':,.!?-]/g, '')
-              .replace(/[ ]/g, '')
-              .replace('ú', 'u');
+              .replace(/[ ]/g, '');
+
+              // For D.Va - Talent lvl 1 - Hit the Nitrous
+              if ( this.talents[index].title === 'HitTheNitrous' ) {
+                this.talents[index].title = this.talents[index].title
+                .replace('The', 'the');
+              // For D.Va - Talent lvl 4 - Get through This
+              } else if (this.talents[index].title === 'GetthroughThis') {
+                this.talents[index].title = this.talents[index].title
+                .replace('through', 'Through');
+              // For Garrosh - Talent lvl 4 - In for the kill
+              } else if (this.talents[index].title === 'InfortheKill') {
+                this.talents[index].title = this.talents[index].title
+                .replace('for', 'For');
+              // For Junkrat - Talent lvl 4 - In for the kill -Rejuvenescência
+              } else if (this.talents[index].title === 'TasteforExplosions') {
+                this.talents[index].title = this.talents[index].title
+                .replace('for', 'For');
+              // For Lucio - Talent lvl 16 - Rejuvenescência
+              } else if (this.talents[index].title === 'Rejuvenescencia') {
+                this.talents[index].title = this.talents[index].title
+                .replace('Rejuvenescencia', 'Rejuvenescência');
+              // For Samuro - Talent lvl 4 - One with the Wind -DanceofDeath
+              } else if (this.talents[index].title === 'OnewiththeWind') {
+                this.talents[index].title = this.talents[index].title
+                .replace('OnewiththeWind', 'OneWithTheWind');
+              // For Samuro - Talent lvl 20 - Dance of Death
+              } else if (this.talents[index].title === 'DanceofDeath') {
+                this.talents[index].title = this.talents[index].title
+                .replace('DanceofDeath', 'DanceOfDeath');
+              }
+
             // console.log(this.talents[index].title);
             }
           }
@@ -125,8 +157,8 @@ export class HeroDetailComponent implements OnInit {
             .replace(/[ ]/g, '-')
             .replace('ú', 'u');
           console.log(heroLinkName);
-          if (heroLinkName === 'cho' || heroLinkName === 'gall'){
-            return this.heroz = 'chogall'
+          if (heroLinkName === 'cho' || heroLinkName === 'gall') {
+            return this.heroz = 'chogall';
           }
           return this.heroz = heroLinkName;
         }
