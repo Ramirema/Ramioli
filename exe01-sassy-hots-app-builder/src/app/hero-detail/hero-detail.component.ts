@@ -99,7 +99,7 @@ export class HeroDetailComponent implements OnInit {
               }
               return a.sort - b.sort;
             });
-            console.log(this.talents);
+            // console.log(this.talents);
 
           // Format all talents names as formatted link name
           for (let index = 0; index < data.talents.length; index++) {
@@ -108,7 +108,7 @@ export class HeroDetailComponent implements OnInit {
               .replace(/[\':,.!?-]/g, '')
               .replace(/[ ]/g, '')
               .replace('ú', 'u');
-            console.log(this.talents[index].title);
+            // console.log(this.talents[index].title);
             }
           }
       );
@@ -124,7 +124,10 @@ export class HeroDetailComponent implements OnInit {
             .replace(/[\'.]/g, '')
             .replace(/[ ]/g, '-')
             .replace('ú', 'u');
-          // console.log(heroLinkName);
+          console.log(heroLinkName);
+          if (heroLinkName === 'cho' || heroLinkName === 'gall'){
+            return this.heroz = 'chogall'
+          }
           return this.heroz = heroLinkName;
         }
       );

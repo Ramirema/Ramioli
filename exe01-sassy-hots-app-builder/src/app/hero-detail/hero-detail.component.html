@@ -28,7 +28,12 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ability-thumb" *ngFor="let ability of abilities">
-              <img class="ability-thumb-pic" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ ability.title }}.png">
+              <ng-container *ngIf="heroz === 'chogall'; else elseBlock">
+                <img class="ability-thumb-pic" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{hero.short_name}}/{{ ability.title }}.png">
+              </ng-container> 
+              <ng-template #elseBlock>
+                  <img class="ability-thumb-pic" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ ability.title }}.png">
+              </ng-template>
               <img class="ability-thumb-layer" src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png">
             </div>
           </div>
