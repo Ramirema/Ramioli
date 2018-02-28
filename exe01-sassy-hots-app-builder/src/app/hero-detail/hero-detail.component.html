@@ -42,56 +42,56 @@
     <!-- LVL 1 -->
     <div class="row">
       <ng-container *ngFor="let talent of talents">
-        <div class="col-lg-1">
-          <img src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="1" title="{{ talent.title }}">
+        <div class="col-lg-1" *ngIf="talent.level === 1">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="1" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 4 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 4">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="4" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="4" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 7 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 7">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="7" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="7" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 10 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 10">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="10" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="10" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 13 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 13">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="13" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="13" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 16 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 16">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="16" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="16" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>
     <!-- LVL 20 -->
     <div class="row">
-      <ng-container *ngFor="let talent of hero.talents">
+      <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 20">
-          <img src="{{ talent.icon_url['64x64'] }}" alt="20" title="{{ talent.title }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="20" title="{{ talent.title }}">
         </div>
       </ng-container>
     </div>

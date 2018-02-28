@@ -73,7 +73,7 @@ export class HeroDetailComponent implements OnInit {
           for (let index = 0; index < data.abilities.length; index++) {
             this.abilities[index].title = data.abilities[index].title
               .toLowerCase()
-              .replace(/[\'.]/g, '')
+              .replace(/[\'.!-]/g, '')
               .replace(/[ ]/g, '-')
               .replace('ú', 'u');
           }
@@ -98,20 +98,18 @@ export class HeroDetailComponent implements OnInit {
                 return n;
               }
               return a.sort - b.sort;
-              // if (a.level < b.level) { return -1; }
-              // if (a.level > b.level) { return 1; }
-              // return 0;
             });
             console.log(this.talents);
           // Format all talents names as formatted link name
           for (let index = 0; index < data.talents.length; index++) {
             this.talents[index].title = data.talents[index].title
               // .toLowerCase()
-              .replace(/[\'.]/g, '')
+              .replace(/[\'.!?-]/g, '')
               .replace(/[ ]/g, '')
               .replace('ú', 'u');
+            console.log(data.talents[index].title);
+            }
           }
-        }
       );
   }
 
