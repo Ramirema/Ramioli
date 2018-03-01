@@ -28,13 +28,31 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ability-thumb" *ngFor="let ability of abilities">
-              <ng-container *ngIf="heroz === 'chogall'; else elseBlock">
-                <img class="ability-thumb-pic" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{hero.short_name}}/{{ ability.title }}.png">
+              <ng-container [ngSwitch]="heroz">
+                <!-- CHOGALL -->
+                <img *ngSwitchCase="'chogall'"
+                class="ability-thumb-pic"
+                src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{hero.short_name}}/{{ ability.titleLink }}.png"
+                title="{{ ability.title }}"
+                >
+                <!-- VARIAN -->
+                <img *ngSwitchCase="'varian'"
+                class="ability-thumb-pic"
+                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
+                title="{{ ability.title }}"
+                >
+                <!-- ALL HEROES -->
+                <img *ngSwitchDefault
+                class="ability-thumb-pic"
+                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                >
               </ng-container>
-              <ng-template #elseBlock>
-                  <img class="ability-thumb-pic" src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{ ability.title }}.png">
-              </ng-template>
-              <img class="ability-thumb-layer" src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png">
+              <!-- LAYER -->
+              <img
+              class="ability-thumb-layer"
+              src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+              title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+              >
             </div>
           </div>
         </div>
@@ -48,11 +66,13 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 1">
+          <!-- HANZO TALENT BUG FIX -->
           <ng-container *ngIf="heroz === 'hanzo' && talent.sort === 3 ; else elseBlock">
-            <img class="talent-thumb-pic" src="https://www.heroesfire.com/images/wikibase/icon/abilities/sonic-arrow.png" alt="1" title="{{ talent.title + '\u000A' + talent.description }}">
+            <img class="talent-thumb-pic" src="https://www.heroesfire.com/images/wikibase/icon/abilities/sonic-arrow.png" alt="1" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
           </ng-container>
+          <!-- MAIN TALENT -->
           <ng-template #elseBlock>
-            <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="1" title="{{ talent.title + '\u000A' + talent.description }}">
+            <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="1" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
           </ng-template>
         </div>
       </ng-container>
@@ -61,7 +81,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 4">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="4" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="4" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
@@ -69,7 +89,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 7">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="7" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="7" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
@@ -77,7 +97,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 10">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="10" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="10" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
@@ -85,7 +105,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 13">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="13" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="13" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
@@ -93,7 +113,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 16">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="16" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="16" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
@@ -101,7 +121,7 @@
     <div class="row">
       <ng-container *ngFor="let talent of talents">
         <div class="col-lg-1" *ngIf="talent.level === 20">
-          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.title }}.png" alt="20" title="{{ talent.title + '\u000A' + talent.description }}">
+          <img class="talent-thumb-pic" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ talent.titleLink }}.png" alt="20" title="{{ talent.title + ' - [' + talent.ability + ']' + '\n' + '---' + '\n' + talent.description }}">
         </div>
       </ng-container>
     </div>
