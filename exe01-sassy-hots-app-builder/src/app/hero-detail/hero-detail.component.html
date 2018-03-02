@@ -28,15 +28,15 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ability-thumb" *ngFor="let ability of abilities">
-              <ng-container [ngSwitch]="heroz">
-                <!-- CHOGALL -->
-                <img *ngSwitchCase="'chogall'"
+              <ng-container [ngSwitch]="true">
+                <!-- CHO + GALL -->
+                <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
                 class="ability-thumb-pic"
-                src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/abilities/icons/{{hero.short_name}}/{{ ability.titleLink }}.png"
+                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
                 title="{{ ability.title }}"
                 >
                 <!-- VARIAN -->
-                <img *ngSwitchCase="'varian'"
+                <img *ngSwitchCase="heroz === 'varian'"
                 class="ability-thumb-pic"
                 src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
                 title="{{ ability.title }}"
