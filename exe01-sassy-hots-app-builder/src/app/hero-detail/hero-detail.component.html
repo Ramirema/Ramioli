@@ -1,10 +1,10 @@
 <div *ngIf="hero">
   <h2 class="hero-name">{{ hero.name | uppercase }}</h2>
   <div class="hero-details row">
-    <div class="col-lg-4 hero-details-img">
+    <div class="col-lg-3 hero-details-img">
       <img src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/bust.jpg" alt="{{ hero.name }}">
     </div>
-    <div class="col-lg-8 hero-details-infos" [ngClass]="{
+    <div class="col-lg-9 hero-details-infos" [ngClass]="{
       'hero-details-infos-assa-bg': hero.role == 'Assassin',
       'hero-details-infos-warr-bg': hero.role == 'Warrior',
       'hero-details-infos-supp-bg': hero.role == 'Support',
@@ -25,37 +25,28 @@
       </div>
       <h3>Abilities : </h3>
       <div>
+
         <div class="row">
-          <div class="col-lg-12">
-            <div class="ability-thumb" *ngFor="let ability of abilities">
-              <ng-container [ngSwitch]="true">
-                <!-- CHO + GALL -->
-                <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
-                class="ability-thumb-pic"
-                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
-                title="{{ ability.title }}"
-                >
-                <!-- VARIAN -->
-                <img *ngSwitchCase="heroz === 'varian'"
-                class="ability-thumb-pic"
-                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
-                title="{{ ability.title }}"
-                >
-                <!-- ALL HEROES -->
-                <img *ngSwitchDefault
-                class="ability-thumb-pic"
-                src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
-                >
-              </ng-container>
-              <!-- LAYER -->
-              <img
-              class="ability-thumb-layer"
-              src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-              title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
-              >
-            </div>
+          <div class="col-lg-3">
+            <img src="http://via.placeholder.com/189x120">
           </div>
-        </div>
+          <div class="col-lg-9" style="background-color: red;" *ngFor="let ability of basic">
+              <div class="ability">{{ ability.name }}</div>
+          </div>
+        </div> <!-- END ROW -->
+
+        <div class="row">
+            <div class="col-lg-3">
+              <img src="http://via.placeholder.com/189x120">
+            </div>
+            <div class="col-lg-9" style="background-color: red;">
+              <ng-container *ngFor="let ability of beast">
+                <div class="ability">{{ ability.name }}</div>
+              </ng-container>
+            </div>
+          </div> <!-- END ROW -->
+
+
       </div>
     </div>
   </div>

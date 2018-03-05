@@ -19,6 +19,10 @@ export class HeroDetailComponent implements OnInit {
   public heroz;
   public abilities;
   public talents;
+  public grouped: object = [];
+  public keys = [];
+  public basic = [];
+  public beast = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -88,8 +92,6 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].sort = 11;
             } else if (this.abilities[z].name === 'E2') {
               this.abilities[z].sort = 12;
-            } else if (this.abilities[z].name === 'D2') {
-              this.abilities[z].sort = 13;
             // BASELINE ABILITIES
             } else if (this.abilities[z].hotkey === '1') {
               this.abilities[z].sort = 14;
@@ -288,6 +290,40 @@ export class HeroDetailComponent implements OnInit {
           }
 
           console.log(this.abilities);
+
+
+          const shape = [];
+
+          this.abilities.forEach(function (a) {
+              shape[a.owner] = shape[a.owner] || [];
+              shape[a.owner].push({
+                cooldown: a.cooldown,
+                description: a.description,
+                hotkey: a.hotkey,
+                icon: a.icon,
+                mana_cost: a.mana_cost,
+                name: a.name,
+                owner: a.owner,
+                sort: a.sort,
+                title: a.title,
+                titleLink: a.titleLink,
+                trait: a.trait
+              });
+            });
+
+            // tslint:disable-next-line:forin
+            for (const test in shape) {
+              console.log(test);
+              this.keys.push(test);
+            }
+
+            this.basic = shape[this.keys[0];
+            this.beast = shape[this.keys[1];
+
+            console.log(this.basic, this.beast);
+
+
+          // console.log(this.grouped);
 
         }
       );
