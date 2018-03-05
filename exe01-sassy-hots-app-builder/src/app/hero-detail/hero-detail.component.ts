@@ -317,8 +317,8 @@ export class HeroDetailComponent implements OnInit {
               this.keys.push(test);
             }
 
-            this.basic = shape[this.keys[0];
-            this.beast = shape[this.keys[1];
+            this.basic = shape[this.keys[0]];
+            this.beast = shape[this.keys[1]];
 
             console.log(this.basic, this.beast);
 
