@@ -98,8 +98,13 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].sort = z + 14;
             }
 
+          }
+
+          for (let z = 0; z < data.abilities.length; z++) {
+
             // ABATHUR [ALL] ICONS FIXED
             if (this.abilities[z].title === 'Carapace') {
+              // THERE IS NO ABA E1 ABILITY
               this.abilities[z].sort = 12;
               this.abilities[z].name = 'E2';
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/carapace.png';
