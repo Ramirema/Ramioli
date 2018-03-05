@@ -42,6 +42,37 @@
             <div class="col-lg-9" style="background-color: red;">
               <ng-container *ngFor="let ability of beast">
                 <div class="ability">{{ ability.name }}</div>
+
+
+                <div class="ability-thumb" *ngFor="let ability of abilities">
+                  <ng-container [ngSwitch]="true" *ngIf="ability.name === 'Q1' || ability.name === 'W1'">
+                    <!-- CHO + GALL -->
+                    <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
+                    class="ability-thumb-pic"
+                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                    title="{{ ability.title }}"
+                    >
+                    <!-- VARIAN -->
+                    <img *ngSwitchCase="heroz === 'varian'"
+                    class="ability-thumb-pic"
+                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
+                    title="{{ ability.title }}"
+                    >
+                    <!-- ALL HEROES -->
+                    <img *ngSwitchDefault
+                    class="ability-thumb-pic"
+                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                    >
+                  </ng-container>
+                  <!-- LAYER -->
+                  <img
+                  class="ability-thumb-layer"
+                  src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                  title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                  >
+                </div>
+
+
               </ng-container>
             </div>
           </div> <!-- END ROW -->
