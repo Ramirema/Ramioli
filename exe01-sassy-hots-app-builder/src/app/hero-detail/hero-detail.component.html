@@ -11,6 +11,7 @@
       'hero-details-infos-spec-bg': hero.role == 'Specialist',
       'hero-details-infos-mult-bg': hero.role == 'Multiclass'
     }">
+
       <div>
         <span>Name : </span>{{hero.name}}
       </div>
@@ -53,7 +54,7 @@
                 >
               </ng-container>
               <!-- HOTKEY -->
-              <div class="hotkey">{{ ability.hotkey }}</div>
+              <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
               <!-- LAYER -->
               <img
               class="ability-thumb-layer"
@@ -67,7 +68,7 @@
         <!-- BEAST ABILITIES -->
         <div class="row beasts">
             <div class="col-sm-12 col-lg-3">
-                <img src="https://www.heroesfire.com/images/wikibase/icon/abilities/devotion-eternal-vanguard.png">
+                <img *ngIf="hero.beast" src="{{ hero.beast }}" title="{{ hero.beastName }}">
             </div>
             <div class="col-lg-9">
               <div class="ability-thumb" *ngFor="let ability of beast">

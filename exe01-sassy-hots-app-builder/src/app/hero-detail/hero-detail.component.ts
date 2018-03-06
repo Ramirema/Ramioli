@@ -41,9 +41,57 @@ export class HeroDetailComponent implements OnInit {
     const short_name = this.route.snapshot.paramMap.get('short_name');
     this.heroService.getHero(short_name)
       .subscribe(
-        hero => {
-          this.hero = hero;
-          // console.log(hero);
+        data => {
+
+          this.hero = data;
+
+          for (let i = 0; i < data.abilities.length; i++) {
+
+            // ABATHUR
+            if (data.abilities[i].title === 'Symbiote') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/symbiote.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // DVA
+            if (data.abilities[i].title === 'Pilot Mode') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/pilot-mode.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // GREYMANE
+            if (data.abilities[i].title === 'Darkflight') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/darkflight.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // LEORIC
+            if (data.abilities[i].title === 'Undying') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/undying.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // TYCHUS
+            if (data.abilities[i].title === 'Commandeer Odin') {
+              this.hero.beast = 'https://static.icy-veins.com/images/heroes/icons/large/storm_ui_icon_tychus_commandeerodin.jpg';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // UTHER
+            if (data.abilities[i].owner === 'UtherEternalVanguard') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/devotion-eternal-vanguard.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // VALEERA
+            if (data.abilities[i].title === 'Vanish') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/vanish.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+          }
+
+          console.log(this.hero);
         }
       );
 
@@ -242,6 +290,7 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/uther/flash-of-light.png';
             } else if (this.abilities[z].title === 'Eternal Vanguard') {
               this.abilities[z].icon = '../../assets/icons/abilities/uther/devotion.png';
+              this.abilities.splice(z, 1);
             }
 
             // VALEERA [ALL ABILITIES] ICONS FIXED

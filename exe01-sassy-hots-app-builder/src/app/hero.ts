@@ -23,5 +23,7 @@ export class Hero {
   abilities: any[];
   translations: any[];
   release_date: Date;
+  beast: string;
+  beastName: string;
 
 }
