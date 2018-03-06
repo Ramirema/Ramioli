@@ -1,6 +1,6 @@
 <div *ngIf="hero">
   <h2 class="hero-name">{{ hero.name | uppercase }}</h2>
-  <div class="hero-details row">
+  <div class="hero-details">
     <div class="col-lg-3 hero-details-img">
       <img src="https://blzmedia-a.akamaihd.net/heroes/{{ heroz }}/bust.jpg" alt="{{ hero.name }}">
     </div>
@@ -11,7 +11,6 @@
       'hero-details-infos-spec-bg': hero.role == 'Specialist',
       'hero-details-infos-mult-bg': hero.role == 'Multiclass'
     }">
-
       <div>
         <span>Name : </span>{{hero.name}}
       </div>
@@ -24,15 +23,29 @@
       <div>
         <span>Date : </span>{{ hero.release_date }}
       </div>
-      <h3>Abilities : </h3>
+      <h3>ABILITIES</h3>
       <div>
 
         <!-- BASIC ABILITIES -->
         <div class="row basics">
-          <div class="col-sm-12 col-lg-3">
-            <!-- <img src="https://www.heroesfire.com/images/wikibase/icon/abilities/devotion-eternal-vanguard.png"> -->
+
+          <div class="col-sm-12 col-lg-2">
+            <div id="basics-title" [ngClass]="{
+              'assa-bd': hero.role == 'Assassin',
+              'warr-bd': hero.role == 'Warrior',
+              'supp-bd': hero.role == 'Support',
+              'spec-bd': hero.role == 'Specialist',
+              'mult-bd': hero.role == 'Multiclass'
+            }">BASICS</div>
           </div>
-          <div class="col-lg-9">
+
+          <div class="col-lg-10" [ngClass]="{
+            'hero-details-infos-assa-bg': hero.role == 'Assassin',
+            'hero-details-infos-warr-bg': hero.role == 'Warrior',
+            'hero-details-infos-supp-bg': hero.role == 'Support',
+            'hero-details-infos-spec-bg': hero.role == 'Specialist',
+            'hero-details-infos-mult-bg': hero.role == 'Multiclass'
+          }">
             <div class="ability-thumb" *ngFor="let ability of basic">
               <ng-container [ngSwitch]="true">
                 <!-- CHO + GALL -->
@@ -66,11 +79,25 @@
         </div>
 
         <!-- BEAST ABILITIES -->
-        <div class="row beasts">
-            <div class="col-sm-12 col-lg-3">
-                <img *ngIf="hero.beast" src="{{ hero.beast }}" title="{{ hero.beastName }}">
+        <div class="row beasts" *ngIf="hero.beast">
+
+            <div class="col-sm-12 col-lg-2">
+                <img src="{{ hero.beast }}" title="{{ hero.beastName }}" [ngClass]="{
+                  'assa-bd': hero.role == 'Assassin',
+                  'warr-bd': hero.role == 'Warrior',
+                  'supp-bd': hero.role == 'Support',
+                  'spec-bd': hero.role == 'Specialist',
+                  'mult-bd': hero.role == 'Multiclass'
+                }">
             </div>
-            <div class="col-lg-9">
+
+            <div class="col-lg-10" [ngClass]="{
+              'hero-details-infos-assa-bg': hero.role == 'Assassin',
+              'hero-details-infos-warr-bg': hero.role == 'Warrior',
+              'hero-details-infos-supp-bg': hero.role == 'Support',
+              'hero-details-infos-spec-bg': hero.role == 'Specialist',
+              'hero-details-infos-mult-bg': hero.role == 'Multiclass'
+            }">
               <div class="ability-thumb" *ngFor="let ability of beast">
                 <ng-container [ngSwitch]="true">
                   <!-- CHO + GALL -->
@@ -92,7 +119,7 @@
                   >
                 </ng-container>
                 <!-- HOTKEY -->
-                <div class="hotkey">{{ ability.hotkey }}</div>
+                <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
                 <!-- LAYER -->
                 <img
                 class="ability-thumb-layer"

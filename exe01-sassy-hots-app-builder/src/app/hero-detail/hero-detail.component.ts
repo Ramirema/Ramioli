@@ -35,6 +35,7 @@ export class HeroDetailComponent implements OnInit {
     this.getHeroLinkName();
     this.getHeroAbilities();
     this.getHeroTalents();
+    // this.avatarSize();
   }
 
   getHero(): void {
@@ -45,11 +46,19 @@ export class HeroDetailComponent implements OnInit {
 
           this.hero = data;
 
+          // SET PICTURE + TITLE FOR "BEAST" MODE
+
           for (let i = 0; i < data.abilities.length; i++) {
 
             // ABATHUR
             if (data.abilities[i].title === 'Symbiote') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/symbiote.png';
+              this.hero.beastName = data.abilities[i].title;
+            }
+
+            // ALEXSTRASZA
+            if (data.abilities[i].title === 'Dragonqueen') {
+              this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/dragonqueen.png';
               this.hero.beastName = data.abilities[i].title;
             }
 
@@ -166,6 +175,48 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/deep-tunnel.png';
             } else if (this.abilities[z].name === 'R3') {
               this.abilities.splice(z, 1);
+            }
+
+            // ALEXSTRASZA
+            if (this.abilities[z].title === 'Dragonqueen') {
+              this.abilities[6] = {
+                'owner': 'AlexstraszaDragon',
+                'name': 'Q2',
+                'title': 'Breath of Life',
+                'description': 'Heal an ally for 20% of Alexstrasza\'s current Health.',
+                'icon': './../../assets/icons/abilities/alexstrasza/breath-of-life.png',
+                'cooldown': 3,
+                // tslint:disable-next-line:max-line-length
+                'hotkey': 'Q',
+                'mana_cost': null,
+                'trait': false
+              };
+              this.abilities[7] = {
+                'owner': 'AlexstraszaDragon',
+                'name': 'W2',
+                'title': 'Preservation',
+                // tslint:disable-next-line:max-line-length
+                'description': 'Plant a seed of healing that blooms after 3 seconds, healing nearby allied Heroes for 30% of their maximum Health.',
+                'icon': './../../assets/icons/abilities/alexstrasza/preservation.png',
+                'cooldown': 16,
+                // tslint:disable-next-line:max-line-length
+                'hotkey': 'W',
+                'mana_cost': null,
+                'trait': false
+              };
+              this.abilities[8] = {
+                'owner': 'AlexstraszaDragon',
+                'name': 'E2',
+                'title': 'Wing Buffet',
+                // tslint:disable-next-line:max-line-length
+                'description': 'Deal 150 (+4% per level) damage to enemies in an area, knocking them back and Slowing them by 50% for 3 seconds.',
+                'icon': './../../assets/icons/abilities/alexstrasza/wing-buffet.png',
+                'cooldown': 4,
+                // tslint:disable-next-line:max-line-length
+                'hotkey': 'E',
+                'mana_cost': null,
+                'trait': false
+              };
             }
 
             // BRIGHTWING [MOUNT] ICON FIXED
@@ -340,7 +391,6 @@ export class HeroDetailComponent implements OnInit {
 
           console.log(this.abilities);
 
-
           const shape = [];
 
           this.abilities.forEach(function (a) {
@@ -469,5 +519,9 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  // avatarSize() {
+  //  return document.getElementsByClassName('hero-details-img')[0].baseURI;
+  // }
 
 }

@@ -12,6 +12,7 @@ h2.hero-name {
   color: white;
 
   .hero-details-img {
+    padding-left: 0;
 
     > img {
       display: block;
@@ -29,11 +30,18 @@ h2.hero-name {
     // background-color: red;
     // opacity: 0.7;
 
+    h3 {
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: $blueLight;
+    }
+
     div.ability-thumb {
-      text-align: center;
-      display: inline-block;
       position: relative;
-      width: 16.66%;
+      display: inline-block;
+      margin-left: 9.7px;
+      text-align: center;
+      width: 15%;
 
       .ability-thumb-pic {
         width: 100%;
@@ -55,10 +63,9 @@ h2.hero-name {
     .basics > div > img,
     .beasts > div > img {
       display: block;
-      margin: 0 auto;
+      // margin: 0 auto;
       width: auto;
       height: 118px;
-      border: 2px solid $support;
     }
 
     .basics > div,
@@ -69,8 +76,23 @@ h2.hero-name {
 
     .basics > div + div,
     .beasts > div + div {
-      background: radial-gradient(circle at left, $support -100%,$blueDark 100%);
+      // background: radial-gradient(circle at left, $support -100%,$blueDark 100%);
       // border: 2px solid darkslateblue;
+    }
+
+    .basics > div:first-of-type {
+      position: relative;
+      height: 118px;
+    }
+
+    .basics #basics-title {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      padding: 40px 17.5px;
+      background-color: $blueDark;
     }
 
     .beasts {
@@ -116,7 +138,25 @@ h2.hero-name {
 
   }
 
+  .assa-bd {
+    border: 2px solid $assassin;
+  }
 
+  .warr-bd {
+    border: 2px solid $warrior;
+  }
+
+  .supp-bd {
+    border: 2px solid $support;
+  }
+
+  .spec-bd {
+    border: 2px solid $specialist;
+  }
+
+  .mult-bd {
+    border: 2px solid $multiclass;
+  }
 
 }
 
