@@ -26,22 +26,33 @@ h2.hero-name {
   }
 
   .hero-details-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 15px;
+    min-height: 388px;
+    max-height: 388px;
     // background-color: red;
     // opacity: 0.7;
 
-    h3 {
-      padding: 10px 15px;
-      font-size: 1rem;
-      background-color: $blueLight;
+    .abilities {
+
+      h3 {
+        margin: 15px 0;
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+
     }
 
     div.ability-thumb {
       position: relative;
       display: inline-block;
-      margin-left: 9.7px;
+      margin-left: 5px;
       text-align: center;
       width: 15%;
+      min-width: 102px;
+      min-height: 115px;
 
       .ability-thumb-pic {
         width: 100%;
@@ -65,7 +76,7 @@ h2.hero-name {
       display: block;
       // margin: 0 auto;
       width: auto;
-      height: 118px;
+      height: 115px;
     }
 
     .basics > div,
@@ -82,7 +93,7 @@ h2.hero-name {
 
     .basics > div:first-of-type {
       position: relative;
-      height: 118px;
+      height: 115px;
     }
 
     .basics #basics-title {
@@ -91,7 +102,7 @@ h2.hero-name {
       left: 15px;
       transform: translateY(-50%);
       font-size: 1.5rem;
-      padding: 40px 17.5px;
+      padding: 38.5px 16px;
       background-color: $blueDark;
     }
 
@@ -117,6 +128,7 @@ h2.hero-name {
     }
 
     &-assa-bg {
+      display: flex;
       background: radial-gradient(circle at left, $assassin -100%,$blueDark 100%);
     }
 
@@ -129,11 +141,32 @@ h2.hero-name {
     }
 
     &-spec-bg {
+      display: flex;
       background: radial-gradient(circle at left, $specialist -100%,$blueDark 100%);
     }
 
     &-mult-bg {
       background: radial-gradient(circle at left, $multiclass -100%,$blueDark 100%);
+    }
+
+    .assa-bg {
+      background-color: $assassin;
+    }
+
+    .warr-bg {
+      background-color: darken($warrior, 10%);
+    }
+
+    .supp-bg {
+      background-color: darken($support, 10%);
+    }
+
+    .spec-bg {
+      background-color: darken($specialist, 5%);
+    }
+
+    .mult-bg {
+      background-color: $multiclass;
     }
 
   }

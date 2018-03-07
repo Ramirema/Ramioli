@@ -35,7 +35,6 @@ export class HeroDetailComponent implements OnInit {
     this.getHeroLinkName();
     this.getHeroAbilities();
     this.getHeroTalents();
-    // this.avatarSize();
   }
 
   getHero(): void {
@@ -173,9 +172,14 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/spike-burst.png';
             } else if (this.abilities[z].title === 'Deep Tunnel') {
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/deep-tunnel.png';
+              this.abilities.splice(z, 1);
             } else if (this.abilities[z].name === 'R3') {
               this.abilities.splice(z, 1);
             }
+
+          }
+
+          for (let z = 0; z < data.abilities.length; z++) {
 
             // ALEXSTRASZA
             if (this.abilities[z].title === 'Dragonqueen') {
@@ -519,9 +523,5 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
-  // avatarSize() {
-  //  return document.getElementsByClassName('hero-details-img')[0].baseURI;
-  // }
 
 }
