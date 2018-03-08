@@ -148,6 +148,21 @@
                       >
                     </ng-container>
                   </ng-container>
+                  <ng-container *ngIf="!abilityDefault">
+                    <!-- ALL HEROES -->
+                    <img
+                    class="ability-thumb-pic"
+                    src="./../../assets/icons/abilities/ability-default-01.png"
+                    >
+                    <!-- HOTKEY -->
+                    <div class="hotkey">E</div>
+                    <!-- LAYER -->
+                    <img
+                    class="ability-thumb-layer"
+                    src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                    title="[ E ] Ability"
+                    >
+                  </ng-container>
                 </div>
 
               <!-- R1 ABILITY -->
@@ -178,7 +193,7 @@
                       <!-- LAYER -->
                       <img
                       class="ability-thumb-layer"
-                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                      src="./../../assets/icons/abilities/ability-layer-heroic.png"
                       title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
                     </ng-container>
@@ -213,7 +228,7 @@
                       <!-- LAYER -->
                       <img
                       class="ability-thumb-layer"
-                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                      src="./../../assets/icons/abilities/ability-layer-heroic.png"
                       title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
                     </ng-container>
@@ -223,10 +238,193 @@
               <!-- TRAIT ABILITY -->
               <div class="ability-thumb">
                   <ng-container *ngFor="let ability of basic">
-                    <ng-container *ngIf="ability.trait === 'Trait'">
+                    <ng-container *ngIf="ability.trait === 'Trait' || ability.trait === true">
                       <ng-container [ngSwitch]="true">
-                        <!-- CHO + GALL -->
-                        <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
+                        <!-- CHO + GALL + GREYMANE -->
+                        <ng-container>
+                          <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
+                          class="ability-thumb-pic"
+                          src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                          title="{{ ability.title }}"
+                          >
+                          <!-- HOTKEY -->
+                          <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
+                          <!-- LAYER -->
+                          <img
+                          class="ability-thumb-layer"
+                          src="./../../assets/icons/abilities/ability-layer-trait.png"
+                          title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                          >
+                        </ng-container>
+                        <!-- VARIAN -->
+                        <ng-container *ngSwitchCase="heroz === 'varian'">
+                          <img
+                          class="ability-thumb-pic"
+                          src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
+                          title="{{ ability.title }}"
+                          >
+                          <!-- HOTKEY -->
+                          <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
+                          <!-- LAYER -->
+                          <img
+                          class="ability-thumb-layer"
+                          src="./../../assets/icons/abilities/ability-layer-trait.png"
+                          title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                          >
+                        </ng-container>
+                        <!-- KHARAZIM -->
+                        <ng-container *ngSwitchCase="heroz === 'kharazim'">
+                          <img
+                          class="ability-thumb-pic"
+                          src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/icons/question-hexagon.png"
+                          title="{{ ability.title }}"
+                          >
+                          <!-- HOTKEY -->
+                          <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
+                          <!-- LAYER -->
+                          <img
+                          class="ability-thumb-layer"
+                          src="./../../assets/icons/abilities/ability-layer-trait.png"
+                          title="Pick your trait &#10;--- &#10;Choose between Transcendence, Iron Fists, and Insight from the Talents panel."
+                          >
+                        </ng-container>
+                        <!-- ALL HEROES -->
+                        <ng-container *ngSwitchDefault>
+                          <img
+                          class="ability-thumb-pic"
+                          src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                          >
+                          <!-- HOTKEY -->
+                          <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
+                          <!-- LAYER -->
+                          <img
+                          class="ability-thumb-layer"
+                          src="./../../assets/icons/abilities/ability-layer-trait.png"
+                          title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                          >
+                        </ng-container>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </div>
+          </div>
+        </div>
+
+        <!-- BEAST ABILITIES -->
+        <div class="row beasts" *ngIf="hero.beast">
+
+            <div class="col-sm-12 col-lg-2">
+                <img src="{{ hero.beast }}" title="{{ hero.beastName }}" [ngClass]="{
+                  'assa-bd': hero.role == 'Assassin',
+                  'warr-bd': hero.role == 'Warrior',
+                  'supp-bd': hero.role == 'Support',
+                  'spec-bd': hero.role == 'Specialist',
+                  'mult-bd': hero.role == 'Multiclass'
+                }">
+            </div>
+
+            <div class="col-lg-10" [ngClass]="{
+              'hero-details-infos-assa-bg': hero.role == 'Assassin',
+              'hero-details-infos-warr-bg': hero.role == 'Warrior',
+              'hero-details-infos-supp-bg': hero.role == 'Support',
+              'hero-details-infos-spec-bg': hero.role == 'Specialist',
+              'hero-details-infos-mult-bg': hero.role == 'Multiclass'
+            }">
+
+              <!-- Q2 ABILITY -->
+              <div class="ability-thumb">
+                <ng-container *ngFor="let ability of beast">
+                  <ng-container *ngIf="ability.hotkey === 'Q'">
+                    <ng-container [ngSwitch]="true">
+                      <!-- GREYMANE -->
+                      <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
+                      class="ability-thumb-pic"
+                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                      title="{{ ability.title }}"
+                      >
+                      <!-- ALL HEROES -->
+                      <img *ngSwitchDefault
+                      class="ability-thumb-pic"
+                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                      >
+                    </ng-container>
+                    <!-- HOTKEY -->
+                    <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
+                    <!-- LAYER -->
+                    <img
+                    class="ability-thumb-layer"
+                    src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                    title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                    >
+                  </ng-container>
+                </ng-container>
+              </div>
+
+              <!-- W2 ABILITY -->
+              <div class="ability-thumb">
+                  <ng-container *ngFor="let ability of beast">
+                    <ng-container *ngIf="ability.hotkey === 'W'">
+                      <ng-container [ngSwitch]="true">
+                        <!-- GREYMANE -->
+                        <img *ngSwitchCase="heroz === 'greymane'"
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                        title="{{ ability.title }}"
+                        >
+                        <!-- ALL HEROES -->
+                        <img *ngSwitchDefault
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                        >
+                      </ng-container>
+                      <!-- HOTKEY -->
+                      <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
+                      <!-- LAYER -->
+                      <img
+                      class="ability-thumb-layer"
+                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                      >
+                    </ng-container>
+                  </ng-container>
+                </div>
+
+              <!-- E2 ABILITY -->
+              <div class="ability-thumb">
+                  <ng-container *ngFor="let ability of beast">
+                    <ng-container *ngIf="ability.hotkey === 'E'">
+                      <ng-container [ngSwitch]="true">
+                        <!-- GREYMANE -->
+                        <img *ngSwitchCase="heroz === 'greymane'"
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                        title="{{ ability.title }}"
+                        >
+                        <!-- ALL HEROES -->
+                        <img *ngSwitchDefault
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                        >
+                      </ng-container>
+                      <!-- HOTKEY -->
+                      <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
+                      <!-- LAYER -->
+                      <img
+                      class="ability-thumb-layer"
+                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                      >
+                    </ng-container>
+                  </ng-container>
+                </div>
+
+              <!-- R3 ABILITY -->
+              <div class="ability-thumb">
+                  <ng-container *ngFor="let ability of beast">
+                    <ng-container *ngIf="ability.name === 'R3'">
+                      <ng-container [ngSwitch]="true">
+                        <!-- GREYMANE -->
+                        <img *ngSwitchCase="heroz === 'greymane'"
                         class="ability-thumb-pic"
                         src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
                         title="{{ ability.title }}"
@@ -255,124 +453,69 @@
                   </ng-container>
                 </div>
 
-          </div>
-        </div>
-
-        <!-- BEAST ABILITIES -->
-        <div class="row beasts" *ngIf="hero.beast">
-
-            <div class="col-sm-12 col-lg-2">
-                <img src="{{ hero.beast }}" title="{{ hero.beastName }}" [ngClass]="{
-                  'assa-bd': hero.role == 'Assassin',
-                  'warr-bd': hero.role == 'Warrior',
-                  'supp-bd': hero.role == 'Support',
-                  'spec-bd': hero.role == 'Specialist',
-                  'mult-bd': hero.role == 'Multiclass'
-                }">
-            </div>
-
-            <div class="col-lg-10" [ngClass]="{
-              'hero-details-infos-assa-bg': hero.role == 'Assassin',
-              'hero-details-infos-warr-bg': hero.role == 'Warrior',
-              'hero-details-infos-supp-bg': hero.role == 'Support',
-              'hero-details-infos-spec-bg': hero.role == 'Specialist',
-              'hero-details-infos-mult-bg': hero.role == 'Multiclass'
-            }">
-              <ng-container *ngFor="let ability of beast">
-                <!-- Q2 ABILITY -->
-                <div class="ability-thumb" *ngIf="ability.hotkey === 'Q'">
-                  <ng-container [ngSwitch]="true">
-                    <!-- CHO + GALL -->
-                    <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
-                    class="ability-thumb-pic"
-                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
-                    title="{{ ability.title }}"
-                    >
-                    <!-- VARIAN -->
-                    <img *ngSwitchCase="heroz === 'varian'"
-                    class="ability-thumb-pic"
-                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
-                    title="{{ ability.title }}"
-                    >
-                    <!-- ALL HEROES -->
-                    <img *ngSwitchDefault
-                    class="ability-thumb-pic"
-                    src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
-                    >
+              <!-- R4 [FAKE] ABILITY -->
+              <div class="ability-thumb">
+                  <ng-container *ngFor="let ability of beast">
+                    <ng-container *ngIf="ability.name === 'R4'">
+                      <ng-container [ngSwitch]="true">
+                        <!-- GREYMANE -->
+                        <img *ngSwitchCase="heroz === 'greymane'"
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                        title="{{ ability.title }}"
+                        >
+                        <!-- VARIAN -->
+                        <img *ngSwitchCase="heroz === 'varian'"
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
+                        title="{{ ability.title }}"
+                        >
+                        <!-- ALL HEROES -->
+                        <img *ngSwitchDefault
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                        >
+                      </ng-container>
+                      <!-- HOTKEY -->
+                      <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
+                      <!-- LAYER -->
+                      <img
+                      class="ability-thumb-layer"
+                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
+                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
+                      >
+                    </ng-container>
                   </ng-container>
-                  <!-- HOTKEY -->
-                  <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
-                  <!-- LAYER -->
-                  <img
-                  class="ability-thumb-layer"
-                  src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                  title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
-                  >
                 </div>
 
-                <!-- W2 ABILITY -->
-                <div class="ability-thumb" *ngIf="ability.hotkey === 'W'">
-                    <ng-container [ngSwitch]="true">
-                      <!-- CHO + GALL -->
-                      <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
-                      title="{{ ability.title }}"
-                      >
-                      <!-- VARIAN -->
-                      <img *ngSwitchCase="heroz === 'varian'"
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
-                      title="{{ ability.title }}"
-                      >
-                      <!-- ALL HEROES -->
-                      <img *ngSwitchDefault
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
-                      >
-                    </ng-container>
-                    <!-- HOTKEY -->
-                    <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
-                    <!-- LAYER -->
-                    <img
-                    class="ability-thumb-layer"
-                    src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                    title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
-                    >
-                  </div>
-
-                <!-- E2 ABILITY -->
-                <div class="ability-thumb" *ngIf="ability.hotkey === 'E'">
-                    <ng-container [ngSwitch]="true">
-                      <!-- CHO + GALL -->
-                      <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
-                      title="{{ ability.title }}"
-                      >
-                      <!-- VARIAN -->
-                      <img *ngSwitchCase="heroz === 'varian'"
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
-                      title="{{ ability.title }}"
-                      >
-                      <!-- ALL HEROES -->
-                      <img *ngSwitchDefault
-                      class="ability-thumb-pic"
-                      src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+              <!-- TRAIT ABILITY -->
+              <div class="ability-thumb">
+                  <ng-container *ngFor="let ability of beast">
+                    <ng-container *ngIf="ability.trait === 'Trait'">
+                      <ng-container [ngSwitch]="true">
+                        <!-- GREYMANE -->
+                        <img *ngSwitchCase="heroz === 'greymane'"
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
+                        title="{{ ability.title }}"
+                        >
+                        <!-- ALL HEROES -->
+                        <img *ngSwitchDefault
+                        class="ability-thumb-pic"
+                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
+                        >
+                      </ng-container>
+                      <!-- HOTKEY -->
+                      <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase }}</div>
+                      <!-- LAYER -->
+                      <img
+                      class="ability-thumb-layer"
+                      src="./../../assets/icons/abilities/ability-layer-trait.png"
+                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
                     </ng-container>
-                    <!-- HOTKEY -->
-                    <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
-                    <!-- LAYER -->
-                    <img
-                    class="ability-thumb-layer"
-                    src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                    title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
-                    >
-                  </div>
-
-              </ng-container>
+                  </ng-container>
+                </div>
             </div>
           </div>
 

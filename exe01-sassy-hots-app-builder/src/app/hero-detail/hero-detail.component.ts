@@ -19,10 +19,14 @@ export class HeroDetailComponent implements OnInit {
   public heroz;
   public abilities;
   public talents;
+  // SECOND MODE
   public grouped: object = [];
   public keys = [];
-  public basic = [];
+  public basic: object = [];
   public beast = [];
+  // E - ABILITY
+  public testz;
+  public abilityDefault;
 
   constructor(
     private route: ActivatedRoute,
@@ -251,10 +255,13 @@ export class HeroDetailComponent implements OnInit {
             // KHARAZIM [ALL TRAITS] ICONS FIXED
             if (this.abilities[z].title === 'Insight') {
               this.abilities[z].icon = '../../assets/icons/abilities/kharazim/insight.png';
+              this.abilities.splice(z, 1);
             } else if (this.abilities[z].title === 'Transcendence') {
               this.abilities[z].icon = '../../assets/icons/abilities/kharazim/transcendence.png';
+              this.abilities.splice(z, 1);
             } else if (this.abilities[z].title === 'Iron Fists') {
               this.abilities[z].icon = '../../assets/icons/abilities/kharazim/iron-fists.png';
+              this.abilities.splice(z, 1);
             }
 
             // LEORIC [Drain essence + Ghastly Swing + Wrath Of The Bone King ] ICONS FIXED
@@ -264,6 +271,8 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = 'https://psionic-storm.com/wp-content/themes/psionicstorm/img/abilities/leoric_trait.png';
             } else if (this.abilities[z].title === 'Ghastly Swing') {
               this.abilities[z].icon = '../../assets/icons/abilities/leoric/ghastly-swing.png';
+            } else if (this.abilities[z].title === 'Undying') {
+              this.abilities[z].owner = 'LeoricUndying';
             }
 
             // LUNARA [MOUNT] ICONS FIXED
@@ -395,7 +404,7 @@ export class HeroDetailComponent implements OnInit {
 
           console.log(this.abilities);
 
-          const shape = [];
+          const shape = {};
 
           this.abilities.forEach(function (a) {
               shape[a.owner] = shape[a.owner] || [];
@@ -416,14 +425,28 @@ export class HeroDetailComponent implements OnInit {
 
             // tslint:disable-next-line:forin
             for (const test in shape) {
-              console.log(test);
+              // console.log(test);
               this.keys.push(test);
             }
 
             this.basic = shape[this.keys[0]];
             this.beast = shape[this.keys[1]];
 
-            console.log(this.basic, this.beast);
+            this.testz = this.basic;
+
+            // console.log(this.testz);
+
+            // SI E1 existe alors on renvoit la donnée
+            for (let i = 0; i < this.testz.length; i++) {
+
+              if (Object.values(this.testz[i]).indexOf('E1') !== -1) {
+                this.abilityDefault = this.testz[i];
+                // console.log('testz E1 OK');
+              }
+
+            }
+
+            console.log(this.basic, this.beast, this.testz, this.abilityDefault);
 
 
           // console.log(this.grouped);
@@ -505,16 +528,17 @@ export class HeroDetailComponent implements OnInit {
         data => {
 
           const heroLinkName = data.name
-            .toLowerCase()
-            .replace(/[\'.]/g, '')
-            .replace(/[ ]/g, '-')
-            .replace('ú', 'u');
+          .toLowerCase()
+          .replace(/[\'.]/g, '')
+          .replace(/[ ]/g, '-')
+          .replace('ú', 'u');
 
-            console.log(heroLinkName);
+          console.log(heroLinkName);
 
-            if (heroLinkName === 'cho' || heroLinkName === 'gall') {
+          if (heroLinkName === 'cho' || heroLinkName === 'gall') {
             return this.heroz = 'chogall';
           }
+
           return this.heroz = heroLinkName;
         }
       );
