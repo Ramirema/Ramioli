@@ -27,17 +27,17 @@
         <!-- BASIC ABILITIES -->
         <div class="row basics">
 
-          <div class="col-sm-12 col-lg-2">
-            <div id="basics-title" [ngClass]="{
+          <div class="col-sm-12 col-lg-4 mount">
+            <img src="{{ !!abilityMount ? abilityMount.icon : './../../assets/icons/abilities/mounts/mount.png' }}" title="{{ !!abilityMount ? abilityMount.title + ' [ ' + abilityMount.hotkey + ' ]' + '\n' + '---' + '\n' + abilityMount.description : 'Mount Up [ Z ] \n --- \n' + 'While mounted heroes receive a 30% boost to their movement speed which allows them to cross the battleground or get to objectives quickly, however taking damage, attacking, or using an ability will dismount immediately preventing the use of mounts in combat.' }}" [ngClass]="{
               'assa-bd': hero.role == 'Assassin',
               'warr-bd': hero.role == 'Warrior',
               'supp-bd': hero.role == 'Support',
               'spec-bd': hero.role == 'Specialist',
               'mult-bd': hero.role == 'Multiclass'
-            }">BASICS</div>
+            }">
           </div>
 
-          <div class="col-lg-10" [ngClass]="{
+          <div class="col-lg-8" [ngClass]="{
             'hero-details-infos-assa-bg': hero.role == 'Assassin',
             'hero-details-infos-warr-bg': hero.role == 'Warrior',
             'hero-details-infos-supp-bg': hero.role == 'Support',
@@ -313,17 +313,18 @@
         <!-- BEAST ABILITIES -->
         <div class="row beasts" *ngIf="hero.beast">
 
-            <div class="col-sm-12 col-lg-2">
-                <img src="{{ hero.beast }}" title="{{ hero.beastName }}" [ngClass]="{
-                  'assa-bd': hero.role == 'Assassin',
-                  'warr-bd': hero.role == 'Warrior',
-                  'supp-bd': hero.role == 'Support',
-                  'spec-bd': hero.role == 'Specialist',
-                  'mult-bd': hero.role == 'Multiclass'
-                }">
+            <div class="col-sm-12 col-lg-4">
+              <img src="{{ !!hero.beast ? './../../assets/icons/abilities/mode.png' : '' }}" title="Special Mode" [ngClass]="{
+                'assa-bd': hero.role == 'Assassin',
+                'warr-bd': hero.role == 'Warrior',
+                'supp-bd': hero.role == 'Support',
+                'spec-bd': hero.role == 'Specialist',
+                'mult-bd': hero.role == 'Multiclass'
+              }">
+              <img src="{{ hero.beast }}" title="{{ hero.beastName }}">
             </div>
 
-            <div class="col-lg-10" [ngClass]="{
+            <div class="col-lg-8" [ngClass]="{
               'hero-details-infos-assa-bg': hero.role == 'Assassin',
               'hero-details-infos-warr-bg': hero.role == 'Warrior',
               'hero-details-infos-supp-bg': hero.role == 'Support',

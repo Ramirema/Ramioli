@@ -71,6 +71,29 @@ h2.hero-name {
 
     }
 
+    .mount > div {
+      width: 47%;
+      float: left;
+      background-color: red;
+    }
+
+    .beasts > div:first-child {
+      position: relative;
+
+      img:first-child {
+        position: absolute;
+      }
+
+      img:last-child {
+        position: absolute;
+        right: 19px;
+        height: 115px;
+        border: 2px solid transparent;
+      }
+    }
+
+
+
     .basics > div > img,
     .beasts > div > img {
       display: block;
@@ -97,13 +120,13 @@ h2.hero-name {
     }
 
     .basics #basics-title {
-      position: absolute;
-      top: 50%;
-      left: 15px;
-      transform: translateY(-50%);
+      // position: absolute;
+      // top: 50%;
+      // left: 15px;
+      // transform: translateY(-50%);
       font-size: 1.5rem;
-      padding: 38.5px 16px;
-      background-color: $blueDark;
+      // padding: 38.5px 16px;
+      // background-color: $blueDark;
     }
 
     .beasts {
@@ -186,7 +209,7 @@ h2.hero-name {
     border: 2px solid $support;
   }
 
-  .spec-bd {
+  .spec-bd   {
     border: 2px solid $specialist;
   }
 

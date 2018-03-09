@@ -27,6 +27,8 @@ export class HeroDetailComponent implements OnInit {
   // E - ABILITY
   public testz;
   public abilityDefault;
+  // Z - MOUNT
+  public abilityMount;
 
   constructor(
     private route: ActivatedRoute,
@@ -56,49 +58,49 @@ export class HeroDetailComponent implements OnInit {
             // ABATHUR
             if (data.abilities[i].title === 'Symbiote') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/symbiote.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // ALEXSTRASZA
             if (data.abilities[i].title === 'Dragonqueen') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/dragonqueen.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // DVA
             if (data.abilities[i].title === 'Pilot Mode') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/pilot-mode.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // GREYMANE
             if (data.abilities[i].title === 'Darkflight') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/darkflight.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // LEORIC
             if (data.abilities[i].title === 'Undying') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/undying.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // TYCHUS
             if (data.abilities[i].title === 'Commandeer Odin') {
               this.hero.beast = 'https://static.icy-veins.com/images/heroes/icons/large/storm_ui_icon_tychus_commandeerodin.jpg';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
             // UTHER
             if (data.abilities[i].owner === 'UtherEternalVanguard') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/devotion-eternal-vanguard.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[1].title + '\n' + '---' + '\n' + data.abilities[1].description;
             }
 
             // VALEERA
             if (data.abilities[i].title === 'Vanish') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/vanish.png';
-              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
             }
 
           }
@@ -175,8 +177,8 @@ export class HeroDetailComponent implements OnInit {
             } else if (this.abilities[z].title === 'Spike Burst') {
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/spike-burst.png';
             } else if (this.abilities[z].title === 'Deep Tunnel') {
-              this.abilities[z].icon = '../../assets/icons/abilities/abathur/deep-tunnel.png';
-              this.abilities.splice(z, 1);
+              this.abilities[z].icon = '../../assets/icons/abilities/abathur/mount.png';
+              // this.abilities.splice(z, 1);
             } else if (this.abilities[z].name === 'R3') {
               this.abilities.splice(z, 1);
             }
@@ -436,6 +438,9 @@ export class HeroDetailComponent implements OnInit {
 
             // console.log(this.testz);
 
+            console.log(this.basic, this.beast, this.testz, this.abilityDefault);
+
+
             // SI E1 existe alors on renvoit la donnée
             for (let i = 0; i < this.testz.length; i++) {
 
@@ -446,10 +451,19 @@ export class HeroDetailComponent implements OnInit {
 
             }
 
-            console.log(this.basic, this.beast, this.testz, this.abilityDefault);
 
+            // SI Z existe alors on renvoit la donnée
+            for (let i = 0; i < this.abilities.length; i++) {
 
-          // console.log(this.grouped);
+              if (Object.values(this.abilities[i]).indexOf('Z1') !== -1) {
+                this.abilityMount = this.abilities[i];
+                this.abilityMount.icon = './../../assets/icons/abilities/mounts/mount-special.png'
+                // console.log('testz E1 OK');
+              }
+
+            }
+
+          console.log(this.abilityMount);
 
         }
       );
