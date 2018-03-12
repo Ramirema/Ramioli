@@ -215,8 +215,8 @@
                     <ng-container *ngIf="ability.trait === 'Trait' || ability.trait === true">
                       <ng-container [ngSwitch]="true">
                         <!-- CHO + GALL + GREYMANE -->
-                        <ng-container>
-                          <img *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'"
+                        <ng-container *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'">
+                          <img 
                           class="ability-thumb-pic"
                           src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
                           >
@@ -243,15 +243,19 @@
                           <!-- HOTKEY -->
                           <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
                           <!-- LAYER -->
-                          <img
+                          <img (mouseenter)="enterD()" (mouseleave)="leaveD()"
                           class="ability-thumb-layer"
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
-                          title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                           >
+                          <div id="ability-infos-d" class="ability-thumb-hover">
+                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
+                            ---<br/>
+                            <i>{{ ability.description }}</i>
+                          </div>
                         </ng-container>
                         <!-- KHARAZIM -->
                         <ng-container *ngSwitchCase="heroz === 'kharazim'">
-                          <img
+                          <img 
                           class="ability-thumb-pic"
                           src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/icons/question-hexagon.png"
                           title="{{ ability.title }}"
@@ -259,11 +263,15 @@
                           <!-- HOTKEY -->
                           <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
                           <!-- LAYER -->
-                          <img
+                          <img (mouseenter)="enterD()" (mouseleave)="leaveD()"
                           class="ability-thumb-layer"
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
-                          title="Pick your trait &#10;--- &#10;Choose between Transcendence, Iron Fists, and Insight from the Talents panel."
                           >
+                          <div id="ability-infos-d" class="ability-thumb-hover">
+                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
+                            ---<br/>
+                            <i>{{ ability.description }}</i>
+                          </div>
                         </ng-container>
                         <!-- ALL HEROES -->
                         <ng-container *ngSwitchDefault>
@@ -274,11 +282,15 @@
                           <!-- HOTKEY -->
                           <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase}}</div>
                           <!-- LAYER -->
-                          <img
+                          <img (mouseenter)="enterD()" (mouseleave)="leaveD()"
                           class="ability-thumb-layer"
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
-                          title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                           >
+                          <div id="ability-infos-d" class="ability-thumb-hover">
+                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
+                            ---<br/>
+                            <i>{{ ability.description }}</i>
+                          </div>
                         </ng-container>
                       </ng-container>
                     </ng-container>
