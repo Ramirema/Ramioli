@@ -19,16 +19,23 @@ export class HeroDetailComponent implements OnInit {
   public heroz;
   public abilities;
   public talents;
-  // SECOND MODE
+  // SECOND MODE [OWNER]
   public grouped: object = [];
   public keys = [];
   public basic: object = [];
   public beast = [];
+  // ALL HEROICS
+  public keyh = [];
+  public special;
+  public heroic;
   // E - ABILITY
   public testz;
   public abilityDefault;
   // Z - MOUNT
   public abilityMount;
+  // ABILITIES HOVER EFFECT
+  public hoverIndex;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -179,7 +186,7 @@ export class HeroDetailComponent implements OnInit {
             } else if (this.abilities[z].title === 'Deep Tunnel') {
               this.abilities[z].icon = '../../assets/icons/abilities/abathur/mount.png';
               // this.abilities.splice(z, 1);
-            } else if (this.abilities[z].name === 'R3') {
+            } else if (this.abilities[z].title === 'Cancel Symbiote') {
               this.abilities.splice(z, 1);
             }
 
@@ -239,7 +246,7 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/dehaka/brushstalker.png';
             }
 
-            // FALSTAF [MOUNT] ICON FIXED
+            // FALSTAD [MOUNT] ICON FIXED
             if (this.abilities[z].title === 'Flight') {
               this.abilities[z].icon = '../../assets/icons/abilities/falstad/flight.png';
             }
@@ -385,7 +392,40 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/xul/bone-armor.png';
             }
 
-          }
+            // ALL HEROES [REGROUP HEROIC ABILITIES]
+            if (this.abilities[z].hotkey === 'R') {
+
+              // REGROUP IN [] IF MORE THAN ONE heroic ability
+              const shapeh = {};
+
+              this.abilities.forEach(function (a) {
+                shapeh[a.hotkey] = shapeh[a.hotkey] || [];
+                shapeh[a.hotkey].push({
+                  cooldown: a.cooldown,
+                  description: a.description,
+                  hotkey: a.hotkey,
+                  icon: a.icon,
+                  mana_cost: a.mana_cost,
+                  name: a.name,
+                  owner: a.owner,
+                  sort: a.sort,
+                  title: a.title,
+                  titleLink: a.title.replace(/[\',.!]/g, '').replace(/[ ]/g, '-').replace(/[-]/g, ''),
+                  trait: a.trait
+                });
+              });
+
+              // console.log(shapeh['R']);
+
+                this.special = shapeh['R'];
+
+                this.heroic = this.special;
+
+              }
+
+            }
+
+            console.log(this.heroic);
 
           // Liste les abilities SORT par ordre ASC
           this.abilities = this.abilities
@@ -406,6 +446,7 @@ export class HeroDetailComponent implements OnInit {
 
           console.log(this.abilities);
 
+          // REGROUP IN [] IF MORE THAN ONE owner property FOR BEAST MODE
           const shape = {};
 
           this.abilities.forEach(function (a) {
@@ -457,8 +498,8 @@ export class HeroDetailComponent implements OnInit {
 
               if (Object.values(this.abilities[i]).indexOf('Z1') !== -1) {
                 this.abilityMount = this.abilities[i];
-                this.abilityMount.icon = './../../assets/icons/abilities/mounts/mount-special.png'
-                // console.log('testz E1 OK');
+                this.abilityMount.icon = './../../assets/icons/abilities/mounts/mount-special.png';
+                // console.log('testz Z1 OK');
               }
 
             }
@@ -562,4 +603,58 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  enterQ1(): void {
+    document.getElementById('ability-infos-q1').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveQ1(): void {
+    document.getElementById('ability-infos-q1').style.opacity = '0';
+    document.getElementById('ability-infos-q1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+  enterW1(): void {
+    document.getElementById('ability-infos-w1').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveW1(): void {
+    document.getElementById('ability-infos-w1').style.opacity = '0';
+    document.getElementById('ability-infos-w1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterE1(): void {
+    document.getElementById('ability-infos-e1').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveE1(): void {
+    document.getElementById('ability-infos-e1').style.opacity = '0';
+    document.getElementById('ability-infos-e1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterR(): void {
+    document.getElementById('ability-infos-r').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveR(): void {
+    document.getElementById('ability-infos-r').style.opacity = '0';
+    document.getElementById('ability-infos-r').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterD(): void {
+    document.getElementById('ability-infos-d').style.opacity = '1';
+    document.getElementById('ability-infos-d').style.left = '18%';
+    console.log('enter');
+  }
+
+  leaveD(): void {
+    document.getElementById('ability-infos-d').style.opacity = '0';
+    document.getElementById('ability-infos-d').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
 }

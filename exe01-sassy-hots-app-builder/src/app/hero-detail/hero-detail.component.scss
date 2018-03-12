@@ -68,6 +68,39 @@ h2.hero-name {
         transform: translateX(-50%);
 
       }
+      .ability-thumb-hover {
+        z-index: 1;
+        opacity: 0;
+        position: absolute;
+        // top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px;
+        width: 300px;
+        text-align: left;
+        font-size: 0.85rem;
+        color: white;
+        background: radial-gradient(circle at center, darkslateblue -100%,$blueDark 100%);
+        border: 1px solid darkslateblue;
+        transition: all 0.3s ease-in-out;
+
+        .ability-infos-pics {
+          float: left;
+          margin-top: 5px;
+          margin-right: 10px;
+          width: 25%;
+          border: 1px solid darkslateblue;
+        }
+
+        b {
+          color: $blueLight;
+        }
+
+        i {
+          // float: left;
+        }
+
+      }
 
     }
 
