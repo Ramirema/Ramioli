@@ -65,49 +65,57 @@ export class HeroDetailComponent implements OnInit {
             // ABATHUR
             if (data.abilities[i].title === 'Symbiote') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/symbiote.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // ALEXSTRASZA
             if (data.abilities[i].title === 'Dragonqueen') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/dragonqueen.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // DVA
             if (data.abilities[i].title === 'Pilot Mode') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/pilot-mode.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // GREYMANE
             if (data.abilities[i].title === 'Darkflight') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/darkflight.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // LEORIC
             if (data.abilities[i].title === 'Undying') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/undying.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // TYCHUS
             if (data.abilities[i].title === 'Commandeer Odin') {
               this.hero.beast = 'https://static.icy-veins.com/images/heroes/icons/large/storm_ui_icon_tychus_commandeerodin.jpg';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
             // UTHER
             if (data.abilities[i].owner === 'UtherEternalVanguard') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/devotion-eternal-vanguard.png';
-              this.hero.beastName = data.abilities[1].title + '\n' + '---' + '\n' + data.abilities[1].description;
+              this.hero.beastName = data.abilities[1].title;
+              this.hero.beastDesc = data.abilities[1].description;
             }
 
             // VALEERA
             if (data.abilities[i].title === 'Vanish') {
               this.hero.beast = 'https://www.heroesfire.com/images/wikibase/icon/abilities/vanish.png';
-              this.hero.beastName = data.abilities[i].title + '\n' + '---' + '\n' + data.abilities[i].description;
+              this.hero.beastName = data.abilities[i].title;
+              this.hero.beastDesc = data.abilities[i].description;
             }
 
           }
@@ -354,6 +362,8 @@ export class HeroDetailComponent implements OnInit {
               this.abilities[z].icon = '../../assets/icons/abilities/zeratul/vorpal-blade.png';
             } else if (this.abilities[z].title === 'Might of the Nerazim') {
               this.abilities[z].icon = '../../assets/icons/abilities/zeratul/might-of-the-nerazim.png';
+            } else if (this.abilities[z].title === 'Void Prison') {
+              this.abilities[z].icon = '../../assets/icons/abilities/zeratul/void-prison.png';
             }
 
             // UTHER [Devotion + Flash of Light + Eternal Vanguard] ICONS FIXED
@@ -410,7 +420,8 @@ export class HeroDetailComponent implements OnInit {
                   owner: a.owner,
                   sort: a.sort,
                   title: a.title,
-                  titleLink: a.title.replace(/[\',.!]/g, '').replace(/[ ]/g, '-').replace(/[-]/g, ''),
+                  // tslint:disable-next-line:max-line-length
+                  titleLink: a.title.replace(/[\',.!]/g, '').replace(/[ ]/g, '-').replace(/[-]/g, '').replace('MightoftheNerazim', 'MightOfTheNerazim'),
                   trait: a.trait
                 });
               });
@@ -568,6 +579,9 @@ export class HeroDetailComponent implements OnInit {
               } else if (this.talents[index].titleLink === 'MightoftheNerazim') {
                 this.talents[index].titleLink = this.talents[index].titleLink
                 .replace('MightoftheNerazim', 'MightOfTheNerazim');
+              } else if (this.talents[index].titleLink === 'GiftoftheXelnaga') {
+                this.talents[index].titleLink = this.talents[index].titleLink
+                .replace('GiftoftheXelnaga', 'GiftoftheXelNaga');
               }
 
             }
@@ -603,6 +617,17 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  enterM1(): void {
+    document.getElementById('ability-infos-m1').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveM1(): void {
+    document.getElementById('ability-infos-m1').style.opacity = '0';
+    document.getElementById('ability-infos-m1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
   enterQ1(): void {
     document.getElementById('ability-infos-q1').style.opacity = '1';
     console.log('enter');
@@ -613,6 +638,7 @@ export class HeroDetailComponent implements OnInit {
     document.getElementById('ability-infos-q1').style.transition = 'all 0.3s ease';
     console.log('leave');
   }
+
   enterW1(): void {
     document.getElementById('ability-infos-w1').style.opacity = '1';
     console.log('enter');
@@ -632,6 +658,50 @@ export class HeroDetailComponent implements OnInit {
   leaveE1(): void {
     document.getElementById('ability-infos-e1').style.opacity = '0';
     document.getElementById('ability-infos-e1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterS(): void {
+    document.getElementById('ability-infos-s1').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveS(): void {
+    document.getElementById('ability-infos-s1').style.opacity = '0';
+    document.getElementById('ability-infos-s1').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterQ2(): void {
+    document.getElementById('ability-infos-q2').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveQ2(): void {
+    document.getElementById('ability-infos-q2').style.opacity = '0';
+    document.getElementById('ability-infos-q2').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterW2(): void {
+    document.getElementById('ability-infos-w2').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveW2(): void {
+    document.getElementById('ability-infos-w2').style.opacity = '0';
+    document.getElementById('ability-infos-w2').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterE2(): void {
+    document.getElementById('ability-infos-e2').style.opacity = '1';
+    console.log('enter');
+  }
+
+  leaveE2(): void {
+    document.getElementById('ability-infos-e2').style.opacity = '0';
+    document.getElementById('ability-infos-e2').style.transition = 'all 0.3s ease';
     console.log('leave');
   }
 
@@ -655,6 +725,18 @@ export class HeroDetailComponent implements OnInit {
   leaveD(): void {
     document.getElementById('ability-infos-d').style.opacity = '0';
     document.getElementById('ability-infos-d').style.transition = 'all 0.3s ease';
+    console.log('leave');
+  }
+
+  enterD2(): void {
+    document.getElementById('ability-infos-d2').style.opacity = '1';
+    document.getElementById('ability-infos-d2').style.left = '18%';
+    console.log('enter');
+  }
+
+  leaveD2(): void {
+    document.getElementById('ability-infos-d2').style.opacity = '0';
+    document.getElementById('ability-infos-d2').style.transition = 'all 0.3s ease';
     console.log('leave');
   }
 }

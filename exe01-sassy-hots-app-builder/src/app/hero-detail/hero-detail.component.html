@@ -28,13 +28,19 @@
         <div class="row basics">
 
           <div class="col-sm-12 col-lg-4 mount">
-            <img src="{{ !!abilityMount ? abilityMount.icon : './../../assets/icons/abilities/mounts/mount.png' }}" title="{{ !!abilityMount ? abilityMount.title + ' [ ' + abilityMount.hotkey + ' ]' + '\n' + '---' + '\n' + abilityMount.description : 'Mount Up [ Z ] \n --- \n' + 'While mounted heroes receive a 30% boost to their movement speed which allows them to cross the battleground or get to objectives quickly, however taking damage, attacking, or using an ability will dismount immediately preventing the use of mounts in combat.' }}" [ngClass]="{
+            <img (mouseenter)="enterM1()" (mouseleave)="leaveM1()"
+            src="{{ !!abilityMount ? abilityMount.icon : './../../assets/icons/abilities/mounts/mount.png' }}"
+            [ngClass]="{
               'assa-bd': hero.role == 'Assassin',
               'warr-bd': hero.role == 'Warrior',
               'supp-bd': hero.role == 'Support',
               'spec-bd': hero.role == 'Specialist',
               'mult-bd': hero.role == 'Multiclass'
             }">
+            <div id="ability-infos-m1" class="ability-thumb-hover">
+              <b class="title">{{ !!abilityMount ? abilityMount.title : 'MountUp' }}</b> - <b class="title">[ {{ !!abilityMount ? abilityMount.hotkey : 'Z' }} ]</b>
+              <i class="desc">{{ !!abilityMount ? abilityMount.description : 'While mounted heroes receive a 30% boost to their movement speed which allows them to cross the battleground or get to objectives quickly, however taking damage, attacking, or using an ability will dismount immediately preventing the use of mounts in combat.' }}</i>
+            </div>
           </div>
 
           <div class="col-lg-8" [ngClass]="{
@@ -76,9 +82,10 @@
                     src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
                     >
                     <div id="ability-infos-q1" class="ability-thumb-hover">
-                      <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                      ---<br/>
-                      <i>{{ ability.description }}</i>
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                        <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                        <i class="desc">{{ ability.description }}</i>
                     </div>
                   </ng-container>
                 </ng-container>
@@ -115,9 +122,10 @@
                       src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
                       >
                       <div id="ability-infos-w1" class="ability-thumb-hover">
-                        <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                        ---<br/>
-                        <i>{{ ability.description }}</i>
+                          <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                          <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                          <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                          <i class="desc">{{ ability.description }}</i>
                       </div>
                     </ng-container>
                   </ng-container>
@@ -154,14 +162,15 @@
                       src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
                       >
                       <div id="ability-infos-e1" class="ability-thumb-hover">
-                        <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                        ---<br/>
-                        <i>{{ ability.description }}</i>
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                        <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                        <i class="desc">{{ ability.description }}</i>
                       </div>
                     </ng-container>
                   </ng-container>
                   <ng-container *ngIf="!abilityDefault">
-                    <!-- ALL HEROES -->
+                    <!-- ALL HEROES [ABATHUR] -->
                     <img
                     class="ability-thumb-pic"
                     src="./../../assets/icons/abilities/ability-default-01.png"
@@ -169,11 +178,13 @@
                     <!-- HOTKEY -->
                     <div class="hotkey">E</div>
                     <!-- LAYER -->
-                    <img
+                    <img (mouseenter)="enterE1()" (mouseleave)="leaveE1()"
                     class="ability-thumb-layer"
                     src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                    title="[ E ] Ability"
                     >
+                    <div id="ability-infos-e1" class="ability-thumb-hover">
+                      <b class="noAbility">No [ E ] Ability.</b>
+                    </div>
                   </ng-container>
                 </div>
 
@@ -182,7 +193,7 @@
                   <!-- ALL HEROES -->
                   <img
                   class="ability-thumb-pic"
-                  src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/icons/question-hexagon.png"
+                  src="./../../assets/icons/abilities/question-hexagon.png"
                   title="Pick"
                   >
                   <ng-container *ngIf="heroic">
@@ -197,12 +208,16 @@
                     <div id="ability-infos-r" class="ability-thumb-hover">
                       Pick your Heroic Ability - [R]<br/><br/>
                       ---<br/><br/>
-                      Choose from Talents pannel between :
-                      <ng-container *ngFor="let ability of heroic">
-                        <br/><br/><b>{{ ability.title }}</b>
+                      Choose from Talents pannel between :<br/>
+                      <div *ngFor="let ability of heroic">
+                        <br/>
                         <img class="ability-infos-pics" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ ability.titleLink }}.png" alt="">
-                        <br/><i>{{ ability.description }}</i>
-                      </ng-container>
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                        <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                        <i class="desc">{{ ability.description }}</i>
+                        <br/>
+                      </div>
                     </div>
                   </ng-container>
                 </div>
@@ -216,7 +231,7 @@
                       <ng-container [ngSwitch]="true">
                         <!-- CHO + GALL + GREYMANE -->
                         <ng-container *ngSwitchCase="heroz === 'chogall' || heroz === 'greymane'">
-                          <img 
+                          <img
                           class="ability-thumb-pic"
                           src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
                           >
@@ -228,9 +243,8 @@
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
-                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                            ---<br/>
-                            <i>{{ ability.description }}</i>
+                              <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                              <i class="desc">{{ ability.description }}</i>
                           </div>
                         </ng-container>
                         <!-- VARIAN -->
@@ -248,14 +262,13 @@
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
-                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                            ---<br/>
-                            <i>{{ ability.description }}</i>
+                              <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                              <i class="desc">{{ ability.description }}</i>
                           </div>
                         </ng-container>
                         <!-- KHARAZIM -->
                         <ng-container *ngSwitchCase="heroz === 'kharazim'">
-                          <img 
+                          <img
                           class="ability-thumb-pic"
                           src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/icons/question-hexagon.png"
                           title="{{ ability.title }}"
@@ -268,9 +281,8 @@
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
-                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                            ---<br/>
-                            <i>{{ ability.description }}</i>
+                              <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                              <i class="desc">{{ ability.description }}</i>
                           </div>
                         </ng-container>
                         <!-- ALL HEROES -->
@@ -287,9 +299,8 @@
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
-                            <b>{{ ability.title }}</b> - <b>[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b><br/>
-                            ---<br/>
-                            <i>{{ ability.description }}</i>
+                            <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                            <i class="desc">{{ ability.description }}</i>
                           </div>
                         </ng-container>
                       </ng-container>
@@ -302,15 +313,25 @@
         <!-- BEAST ABILITIES -->
         <div class="row beasts" *ngIf="hero.beast">
 
-            <div class="col-sm-12 col-lg-4">
-              <img src="{{ !!hero.beast ? './../../assets/icons/abilities/mode.png' : '' }}" title="Special Mode" [ngClass]="{
+            <div class="col-sm-12 col-lg-4 special" (mouseenter)="enterS()" (mouseleave)="leaveS()">
+
+              <img
+              src="./../../assets/icons/abilities/mode.png"
+              [ngClass]="{
                 'assa-bd': hero.role == 'Assassin',
                 'warr-bd': hero.role == 'Warrior',
                 'supp-bd': hero.role == 'Support',
                 'spec-bd': hero.role == 'Specialist',
                 'mult-bd': hero.role == 'Multiclass'
               }">
-              <img src="{{ hero.beast }}" title="{{ hero.beastName }}">
+
+              <img class="beast" src="{{ hero.beast }}">
+
+              <div id="ability-infos-s1" class="ability-thumb-hover">
+                <b class="title">{{ hero.beastName }}</b>
+                <i class="desc">{{ hero.beastDesc }}</i>
+              </div>
+
             </div>
 
             <div class="col-lg-8" [ngClass]="{
@@ -341,11 +362,16 @@
                     <!-- HOTKEY -->
                     <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
                     <!-- LAYER -->
-                    <img
+                    <img (mouseenter)="enterQ2()" (mouseleave)="leaveQ2()"
                     class="ability-thumb-layer"
                     src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                    title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                     >
+                    <div id="ability-infos-q2" class="ability-thumb-hover">
+                      <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                      <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                      <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                      <i class="desc">{{ ability.description }}</i>
+                    </div>
                   </ng-container>
                 </ng-container>
               </div>
@@ -370,11 +396,17 @@
                       <!-- HOTKEY -->
                       <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
                       <!-- LAYER -->
-                      <img
+                      <img (mouseenter)="enterW2()" (mouseleave)="leaveW2()"
                       class="ability-thumb-layer"
                       src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
                       title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
+                      <div id="ability-infos-w2" class="ability-thumb-hover">
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                        <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                        <i class="desc">{{ ability.description }}</i>
+                      </div>
                     </ng-container>
                   </ng-container>
                 </div>
@@ -399,49 +431,24 @@
                       <!-- HOTKEY -->
                       <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
                       <!-- LAYER -->
-                      <img
+                      <img (mouseenter)="enterE2()" (mouseleave)="leaveE2()"
                       class="ability-thumb-layer"
                       src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
+                      <div id="ability-infos-e2" class="ability-thumb-hover">
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
+                        <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
+                        <i class="desc">{{ ability.description }}</i>
+                      </div>
                     </ng-container>
                   </ng-container>
                 </div>
 
+              <!-- FAKE CONTENT TO FILL EMPTY SPACES -->
               <!-- R3 ABILITY -->
               <div class="ability-thumb">
-                  <ng-container *ngFor="let ability of beast">
-                    <ng-container *ngIf="ability.name === 'R3'">
-                      <ng-container [ngSwitch]="true">
-                        <!-- GREYMANE -->
-                        <img *ngSwitchCase="heroz === 'greymane'"
-                        class="ability-thumb-pic"
-                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + hero.short_name + '/' + ability.titleLink + '.png' }}"
-                        title="{{ ability.title }}"
-                        >
-                        <!-- VARIAN -->
-                        <img *ngSwitchCase="heroz === 'varian'"
-                        class="ability-thumb-pic"
-                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/warrior/' + ability.titleLink + '.png' }}"
-                        title="{{ ability.title }}"
-                        >
-                        <!-- ALL HEROES -->
-                        <img *ngSwitchDefault
-                        class="ability-thumb-pic"
-                        src="{{ !!ability.icon ? ability.icon : 'https://blzmedia-a.akamaihd.net/heroes/' + heroz + '/abilities/icons/' + ability.titleLink + '.png' }}"
-                        >
-                      </ng-container>
-                      <!-- HOTKEY -->
-                      <div class="hotkey" *ngIf="ability.hotkey">{{ ability.hotkey }}</div>
-                      <!-- LAYER -->
-                      <img
-                      class="ability-thumb-layer"
-                      src="https://eu.battle.net/heroes/static/images/heroes/ability-icon-frame_hover.png"
-                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
-                      >
-                    </ng-container>
-                  </ng-container>
-                </div>
+              </div>
 
               <!-- TRAIT ABILITY -->
               <div class="ability-thumb">
@@ -463,11 +470,14 @@
                       <!-- HOTKEY -->
                       <div class="hotkey">{{ !!ability.hotkey ? ability.hotkey : ability.trait | uppercase }}</div>
                       <!-- LAYER -->
-                      <img
+                      <img (mouseenter)="enterD2()" (mouseleave)="leaveD2()"
                       class="ability-thumb-layer"
                       src="./../../assets/icons/abilities/ability-layer-trait.png"
-                      title="{{ ability.title + ' - [' }} {{ !!ability.trait ? ability.trait : ability.hotkey }} {{ ']' + '\n' + '---' + '\n' + ability.description }}"
                       >
+                      <div id="ability-infos-d2" class="ability-thumb-hover">
+                        <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
+                        <i class="desc">{{ ability.description }}</i>
+                      </div>
                     </ng-container>
                   </ng-container>
                 </div>

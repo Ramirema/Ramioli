@@ -69,7 +69,7 @@ h2.hero-name {
 
       }
       .ability-thumb-hover {
-        z-index: 1;
+        z-index: 2;
         opacity: 0;
         position: absolute;
         // top: 0;
@@ -83,6 +83,8 @@ h2.hero-name {
         background: radial-gradient(circle at center, darkslateblue -100%,$blueDark 100%);
         border: 1px solid darkslateblue;
         transition: all 0.3s ease-in-out;
+        // supprime les evenement "curseur souris" -> hover,...
+        pointer-events: none;
 
         .ability-infos-pics {
           float: left;
@@ -92,22 +94,109 @@ h2.hero-name {
           border: 1px solid darkslateblue;
         }
 
-        b {
+        b.title {
+          display: inline-block;
+          color: $blueLight;
+          margin-bottom: 12px;
+        }
+
+        b.noAbility {
+          display: inline-block;
           color: $blueLight;
         }
 
-        i {
-          // float: left;
+        i.mana {
+          display: block;
+          margin-top: -8px;
+          color: lighten(darkslateblue, 20%);
+          font-size: 0.8rem;
+        }
+
+        i.cd {
+          display: block;
+          padding-bottom: 11px;
+          font-size: 0.8rem;
+          color: lighten(darkslateblue, 20%);
+          // border-bottom: 1px solid darkslateblue;
+        }
+
+        i.desc {
+          display: inline-block;
+          margin-top: -1px;
+          padding-top: 10px;
+          border-top: 1px solid darkslateblue;
         }
 
       }
 
     }
 
-    .mount > div {
-      width: 47%;
-      float: left;
-      background-color: red;
+    .mount {
+      position: relative;
+      // width: 47%;
+      // float: left;
+      // background-color: red;
+
+      .ability-thumb-hover {
+        z-index: 2;
+        opacity: 0;
+        position: absolute;
+        // top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px;
+        width: 300px;
+        text-align: left;
+        font-size: 0.85rem;
+        color: white;
+        background: radial-gradient(circle at center, darkslateblue -100%,$blueDark 100%);
+        border: 1px solid darkslateblue;
+        transition: all 0.3s ease-in-out;
+        // supprime les evenement "curseur souris" -> hover,...
+        pointer-events: none;
+
+        .ability-infos-pics {
+          float: left;
+          margin-top: 5px;
+          margin-right: 10px;
+          width: 25%;
+          border: 1px solid darkslateblue;
+        }
+
+        b.title {
+          display: inline-block;
+          color: $blueLight;
+          margin-bottom: 12px;
+        }
+
+        b.noAbility {
+          display: inline-block;
+          color: $blueLight;
+        }
+
+        i.mana {
+          display: block;
+          margin-top: -8px;
+          color: lighten(darkslateblue, 20%);
+          font-size: 0.8rem;
+        }
+
+        i.cd {
+          display: block;
+          padding-bottom: 11px;
+          font-size: 0.8rem;
+          color: lighten(darkslateblue, 20%);
+          // border-bottom: 1px solid darkslateblue;
+        }
+
+        i.desc {
+          display: block;
+          margin-top: -1px;
+          padding-top: 10px;
+          border-top: 1px solid darkslateblue;
+        }
+
+      }
     }
 
     .beasts > div:first-child {
@@ -117,11 +206,71 @@ h2.hero-name {
         position: absolute;
       }
 
-      img:last-child {
-        position: absolute;
-        right: 19px;
+      img.beast {
+        position: relative;
+        left: 135px;
         height: 115px;
         border: 2px solid transparent;
+      }
+      .ability-thumb-hover {
+        z-index: 2;
+        opacity: 0;
+        position: absolute;
+        // top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px;
+        width: 300px;
+        text-align: left;
+        font-size: 0.85rem;
+        color: white;
+        background: radial-gradient(circle at center, darkslateblue -100%,$blueDark 100%);
+        border: 1px solid darkslateblue;
+        transition: all 0.3s ease-in-out;
+        // supprime les evenement "curseur souris" -> hover,...
+        pointer-events: none;
+
+        .ability-infos-pics {
+          float: left;
+          margin-top: 5px;
+          margin-right: 10px;
+          width: 25%;
+          border: 1px solid darkslateblue;
+        }
+
+        b.title {
+          display: inline-block;
+          color: $blueLight;
+          margin-bottom: 12px;
+        }
+
+        b.noAbility {
+          display: inline-block;
+          color: $blueLight;
+        }
+
+        i.mana {
+          display: block;
+          margin-top: -8px;
+          color: lighten(darkslateblue, 20%);
+          font-size: 0.8rem;
+        }
+
+        i.cd {
+          display: block;
+          padding-bottom: 11px;
+          font-size: 0.8rem;
+          color: lighten(darkslateblue, 20%);
+          // border-bottom: 1px solid darkslateblue;
+        }
+
+        i.desc {
+          display: block;
+          margin-top: -1px;
+          padding-top: 10px;
+          border-top: 1px solid darkslateblue;
+        }
+
       }
     }
 
@@ -180,7 +329,7 @@ h2.hero-name {
       padding-bottom: 5px;
       width: 65%;
       font-weight: bold;
-      background: rgba($color: #000000, $alpha: 0.6);
+      background: rgba($color: #000000, $alpha: 0.5);
     }
 
     &-assa-bg {

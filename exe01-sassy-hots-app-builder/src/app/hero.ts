@@ -25,5 +25,6 @@ export class Hero {
   release_date: Date;
   beast: string;
   beastName: string;
+  beastDesc: string;
 
 }
