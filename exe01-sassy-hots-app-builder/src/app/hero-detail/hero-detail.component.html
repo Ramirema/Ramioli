@@ -85,7 +85,7 @@
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                         <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                         <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                     </div>
                   </ng-container>
                 </ng-container>
@@ -125,7 +125,7 @@
                           <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                           <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                           <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                          <i class="desc">{{ ability.description }}</i>
+                          <i class="desc" [innerHTML]=ability.description></i>
                       </div>
                     </ng-container>
                   </ng-container>
@@ -165,10 +165,11 @@
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                         <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                         <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                       </div>
                     </ng-container>
                   </ng-container>
+                  <!-- IF NO E ABILITY -->
                   <ng-container *ngIf="!abilityDefault">
                     <!-- ALL HEROES [ABATHUR] -->
                     <img
@@ -203,7 +204,6 @@
                     <img (mouseenter)="enterR()" (mouseleave)="leaveR()"
                     class="ability-thumb-layer"
                     src="./../../assets/icons/abilities/ability-layer-heroic.png"
-                    title=""
                     >
                     <div id="ability-infos-r" class="ability-thumb-hover">
                       Pick your Heroic Ability - [R]<br/><br/>
@@ -215,7 +215,7 @@
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                         <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                         <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                         <br/>
                       </div>
                     </div>
@@ -244,7 +244,7 @@
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
                               <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
-                              <i class="desc">{{ ability.description }}</i>
+                              <i class="desc" [innerHTML]=ability.description></i>
                           </div>
                         </ng-container>
                         <!-- VARIAN -->
@@ -263,14 +263,14 @@
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
                               <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
-                              <i class="desc">{{ ability.description }}</i>
+                              <i class="desc" [innerHTML]=ability.description></i>
                           </div>
                         </ng-container>
                         <!-- KHARAZIM -->
                         <ng-container *ngSwitchCase="heroz === 'kharazim'">
                           <img
                           class="ability-thumb-pic"
-                          src="https://psionic-storm.com/wp-content/themes/psionicstorm/img/icons/question-hexagon.png"
+                          src="./../../assets/icons/abilities/question-hexagon.png"
                           title="{{ ability.title }}"
                           >
                           <!-- HOTKEY -->
@@ -281,8 +281,18 @@
                           src="./../../assets/icons/abilities/ability-layer-trait.png"
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
-                              <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
-                              <i class="desc">{{ ability.description }}</i>
+                            Pick your Heroic Ability - [R]<br/><br/>
+                            ---<br/><br/>
+                            Choose from Talents pannel between :<br/>
+                            <div *ngFor="let trait of traits">
+                              <br/>
+                              <img class="ability-infos-pics" src="https://d1i1jxrdh2kvwy.cloudfront.net/Images/Talents/{{ trait.titleLink }}.png" alt="">
+                              <b class="title">{{ trait.title }}</b> - <b class="title">[ {{ !!trait.trait ? trait.trait : trait.hotkey }} ]</b>
+                              <i class="mana">Mana cost : {{ !!trait.mana_cost ? trait.mana_cost : 'NA' }}</i>
+                              <i class="cd">Cooldown : {{ !!trait.cooldown ? trait.cooldown + 's' : 'NA' }}</i>
+                              <i class="desc" [innerHTML]=trait.description></i>
+                              <br/>
+                            </div>
                           </div>
                         </ng-container>
                         <!-- ALL HEROES -->
@@ -300,7 +310,7 @@
                           >
                           <div id="ability-infos-d" class="ability-thumb-hover">
                             <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
-                            <i class="desc">{{ ability.description }}</i>
+                            <i class="desc" [innerHTML]=ability.description></i>
                           </div>
                         </ng-container>
                       </ng-container>
@@ -370,7 +380,7 @@
                       <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                       <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                       <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                      <i class="desc">{{ ability.description }}</i>
+                      <i class="desc" [innerHTML]=ability.description></i>
                     </div>
                   </ng-container>
                 </ng-container>
@@ -405,7 +415,7 @@
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                         <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                         <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                       </div>
                     </ng-container>
                   </ng-container>
@@ -439,7 +449,7 @@
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
                         <i class="mana">Mana cost : {{ !!ability.mana_cost ? ability.mana_cost : 'NA' }}</i>
                         <i class="cd">Cooldown : {{ !!ability.cooldown ? ability.cooldown + 's' : 'NA' }}</i>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                       </div>
                     </ng-container>
                   </ng-container>
@@ -476,7 +486,7 @@
                       >
                       <div id="ability-infos-d2" class="ability-thumb-hover">
                         <b class="title">{{ ability.title }}</b> - <b class="title">[ {{ !!ability.trait ? ability.trait : ability.hotkey }} ]</b>
-                        <i class="desc">{{ ability.description }}</i>
+                        <i class="desc" [innerHTML]=ability.description></i>
                       </div>
                     </ng-container>
                   </ng-container>

@@ -33,9 +33,9 @@ export class HeroDetailComponent implements OnInit {
   public abilityDefault;
   // Z - MOUNT
   public abilityMount;
-  // ABILITIES HOVER EFFECT
-  public hoverIndex;
-
+  // D - ALL TRAITS [KHARAZIM]
+  public keyt = [];
+  public traits;
 
   constructor(
     private route: ActivatedRoute,
@@ -199,6 +199,43 @@ export class HeroDetailComponent implements OnInit {
             }
 
           }
+
+
+          for (let z = 0; z < data.abilities.length; z++) {
+
+            // ALL HEROES [REGROUP TRAITS ABILITIES]
+            if (this.abilities[z].trait === 'Trait') {
+
+              // REGROUP IN [] IF MORE THAN ONE trait ability
+              const shapet = {};
+
+              this.abilities.forEach(function (a) {
+                shapet[a.trait] = shapet[a.trait] || [];
+                shapet[a.trait].push({
+                  cooldown: a.cooldown,
+                  description: a.description
+                  .replace('Quest:', '<font color="#FFD700"> \u2762 Quest</font> :')
+                  .replace('Reward:', '<br/><font color="#FFD700"> \u2762 Reward</font> :'),
+                  hotkey: a.hotkey,
+                  icon: a.icon,
+                  mana_cost: a.mana_cost,
+                  name: a.name,
+                  owner: a.owner,
+                  sort: a.sort,
+                  title: a.title,
+                  // tslint:disable-next-line:max-line-length
+                  titleLink: a.title.replace(/[\',.!]/g, '').replace(/[ ]/g, '-').replace(/[-]/g, '').replace('MightoftheNerazim', 'MightOfTheNerazim'),
+                  trait: a.trait
+                });
+              });
+
+              console.log(shapet);
+
+              this.traits = shapet['Trait'];
+
+            }
+          }
+
 
           for (let z = 0; z < data.abilities.length; z++) {
 
@@ -412,7 +449,9 @@ export class HeroDetailComponent implements OnInit {
                 shapeh[a.hotkey] = shapeh[a.hotkey] || [];
                 shapeh[a.hotkey].push({
                   cooldown: a.cooldown,
-                  description: a.description,
+                  description: a.description
+                  .replace('Quest:', '<br/><font color="#FFD700"> \u2762 Quest</font> :')
+                  .replace('Reward:', '<br/><font color="#FFD700"> \u2762 Reward</font> :'),
                   hotkey: a.hotkey,
                   icon: a.icon,
                   mana_cost: a.mana_cost,
@@ -434,9 +473,11 @@ export class HeroDetailComponent implements OnInit {
 
               }
 
+
+
             }
 
-            console.log(this.heroic);
+            console.log(this.heroic, this.trait);
 
           // Liste les abilities SORT par ordre ASC
           this.abilities = this.abilities
@@ -464,7 +505,9 @@ export class HeroDetailComponent implements OnInit {
               shape[a.owner] = shape[a.owner] || [];
               shape[a.owner].push({
                 cooldown: a.cooldown,
-                description: a.description,
+                description: a.description
+                .replace('Quest:', '<br/><font color="#FFD700"> \u2762 Quest</font> :')
+                .replace('Reward:', '<br/><font color="#FFD700"> \u2762 Reward</font> :'),
                 hotkey: a.hotkey,
                 icon: a.icon,
                 mana_cost: a.mana_cost,
